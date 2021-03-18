@@ -18,7 +18,7 @@ var theme = (function() {
             lightMode : false,
             path : themeVars.path,
         },
-        
+
 
         /* Init
          -------------------------------- */
@@ -43,10 +43,10 @@ var theme = (function() {
             // Plugins
             this.plugins.lazy();
             this.plugins.disqus();
-            
+
             // AX Loader
             this.AXloader.init();
-            
+
         },
 
         reload: function() {
@@ -101,7 +101,7 @@ var theme = (function() {
                 } else {
                     document.querySelector('html').classList.add('no-touch');
                 }
-              
+
             },
             checkIE : function() {
                 if (/MSIE 10/i.test(navigator.userAgent) || /MSIE 9/i.test(navigator.userAgent)  ) {
@@ -177,8 +177,8 @@ var theme = (function() {
                         if ( plane.getAttribute('data-move-y') ) {
                             plane.moveY = parseFloat(plane.getAttribute('data-move-y'));
                         }
-                       
-                    }   
+
+                    }
 
                     addEventListener('mousemove', theme.fx.smoothMove, false );
                 }
@@ -197,11 +197,11 @@ var theme = (function() {
             smoothMove : function(e) {
                 var decimalX = e.clientX / window.innerWidth - 0.5;
                 var decimalY = e.clientY / window.innerHeight - 0.5;
-                
+
                 for( let plane of theme.fx.planes ) {
                     gsap.to(plane, 1, { y: plane.moveY * decimalY, x: plane.moveX * decimalX, ease: 'power3.out' });
                 }
-                
+
             },
 
             kill : function() {
@@ -209,7 +209,7 @@ var theme = (function() {
                 removeEventListener('mousemove', theme.fx.perspective, false );
                 removeEventListener('mousemove', theme.fx.smoothMove, false );
 
-            }            
+            }
 
         },
 
@@ -235,14 +235,14 @@ var theme = (function() {
                     thumb.addEventListener('mouseenter', fx.mouseenterFn);
                     thumb.addEventListener('mousemove', fx.mousemoveFn);
                     thumb.addEventListener('mouseleave', fx.mouseleaveFn);
-                }   
+                }
 
             },
 
             mouseenterFn : function(ev) {
                 let fx = theme.tiltFX;
                 clearTimeout(fx.mousetime);
-                
+
                 fx.plane = ev.target;
                 fx.img = ev.target.querySelector( '.ithumb-perspective__img' );
                 fx.title = ev.target.querySelector( '.ithumb-perspective__title' );
@@ -265,7 +265,7 @@ var theme = (function() {
                     fx.tilt(ev);
                 });
             },
-            mouseleaveFn : function(ev) { 
+            mouseleaveFn : function(ev) {
                 let fx = theme.tiltFX;
 
                 let p = ev.target;
@@ -287,7 +287,7 @@ var theme = (function() {
                         scale: 1
                     });
                 });
-         
+
             },
 
             getMousePos : function(e) {
@@ -311,16 +311,16 @@ var theme = (function() {
                 const mousepos = fx.getMousePos(ev);
                 // Document scrolls.
                 const docScrolls = {
-                    left : document.body.scrollLeft + document.documentElement.scrollLeft, 
+                    left : document.body.scrollLeft + document.documentElement.scrollLeft,
                     top : document.body.scrollTop + document.documentElement.scrollTop
                 };
                 const bounds = fx.plane.getBoundingClientRect();
                 // Mouse position relative to the main element (this.DOM.el).
-                const relmousepos = { 
-                    x : mousepos.x - bounds.left - docScrolls.left, 
-                    y : mousepos.y - bounds.top - docScrolls.top 
+                const relmousepos = {
+                    x : mousepos.x - bounds.left - docScrolls.left,
+                    y : mousepos.y - bounds.top - docScrolls.top
                 };
-                
+
                 // Move the element from -20 to 20 pixels in both x and y axis.
                 // Rotate the element from -15 to 15 degrees in both x and y axis.
                 let t = {x:[-20,20],y:[-20,20]},
@@ -344,14 +344,14 @@ var theme = (function() {
                     y: transforms.translation.y,
                     rotationX: transforms.rotation.x,
                     rotationY: transforms.rotation.y
-                }); 
+                });
                 // Move the texts wrap.
                 gsap.to(fx.title, 1.5, {
                     ease: 'Power1.easeOut',
                     x: -1*transforms.translation.x,
                     y: -1*transforms.translation.y
-                }); 
-              
+                });
+
             },
 
             kill : function() {
@@ -365,12 +365,12 @@ var theme = (function() {
 
 
         /* ==================================================
-          AXloader 
+          AXloader
         ================================================== */
         AXloader: {
 
             init: function() {
-                
+
                 if ( themeVars.ajaxed === '0' ) {
                     theme.visible();
                     return;
@@ -380,7 +380,7 @@ var theme = (function() {
                 let blacklistSelectors = theme.AXloader.ajaxSplit( themeVars.blacklistSelectors );
                 let reloadScripts      = theme.AXloader.ajaxSplit( themeVars.reloadScripts );
                 let permalinks         = (themeVars.permalinks === 1) ? true : false;
-                
+
                 AXloader.init({
                     baseUrl           : themeVars.baseUrl,
                     dir               : themeVars.dir,
@@ -408,12 +408,12 @@ var theme = (function() {
 
             ajaxSplit :  function( a ) {
                 if ( a === '' ) {
-                      return [];  
+                      return [];
                 } else {
                       return a.split(',');
                 }
             },
-            
+
             loadProgress: function() {
                 let progress = this;
                 let bar = document.querySelector('.loader__progress');
@@ -427,12 +427,12 @@ var theme = (function() {
                 if ( data.el !== 0 ) {
                     pos = data.el.getBoundingClientRect().top + window.scrollY - data.offset
                 }
-                
+
                 if ( isNaN( pos ) === false ) {
                     if ( theme.smoothScroll.scrollbar ) {
                         let s = theme.smoothScroll.scrollbar;
                         s.scrollTo(0, pos, 0);
-                    } else { 
+                    } else {
                         theme.helpers.scrollToPos(pos, 0, 0);
                    }
                 }
@@ -472,7 +472,7 @@ var theme = (function() {
                         if ( img ) {
 
                             // FX Load
-                            // 
+                            //
                             // Full Size image effect
                             if ( trigger.classList.contains('fx-load-fz') ) {
                                 // Disable loader because window is filled with an image
@@ -483,10 +483,10 @@ var theme = (function() {
 
                                 // Add new
                                 gsap.set(holder, {
-                                    visibility: 'visible', 
-                                    top: imgRect.y + 'px', 
-                                    left: imgRect.x + 'px', 
-                                    width: imgRect.width + 'px', 
+                                    visibility: 'visible',
+                                    top: imgRect.y + 'px',
+                                    left: imgRect.x + 'px',
+                                    width: imgRect.width + 'px',
                                     height: imgRect.height + 'px',
                                     backgroundImage: "url('"+src+"')"
                                 });
@@ -495,59 +495,59 @@ var theme = (function() {
                                 if ( trigger.classList.contains('fx-load-scroll-after') ) {
                                     holder.classList.add('fx-load-scroll-after');
                                 }
-                                
+
                                 holder.classList.add('fx-load-ready');
-                                    
+
                             }
 
                             // Fit image size effect
                             if ( trigger.classList.contains('fx-load-fi') ) {
-                                
+
                                 let triggerRect = trigger.getBoundingClientRect();
                                 let src = img.src;
 
                                 // Add new
                                 gsap.set(holder, {
-                                    visibility: 'visible', 
-                                    top: triggerRect.y + 'px', 
-                                    left: triggerRect.x + 'px', 
-                                    width: triggerRect.width + 'px', 
+                                    visibility: 'visible',
+                                    top: triggerRect.y + 'px',
+                                    left: triggerRect.x + 'px',
+                                    width: triggerRect.width + 'px',
                                     height: triggerRect.height + 'px',
                                     backgroundImage: "url('"+src+"')"
                                 });
 
                                 let onCenter = {
-                                    xPercent:-50, 
-                                    yPercent:-50, 
-                                    left:"50%", 
+                                    xPercent:-50,
+                                    yPercent:-50,
+                                    left:"50%",
                                     top:"50%",
                                 };
                                 gsap.to(holder, {
-                                    duration: 0.5, 
-                                    xPercent:0, 
-                                    yPercent:0, 
-                                    top: triggerRect.y + 'px', 
-                                    left: triggerRect.x + 'px', 
-                                    width: triggerRect.width, 
+                                    duration: 0.5,
+                                    xPercent:0,
+                                    yPercent:0,
+                                    top: triggerRect.y + 'px',
+                                    left: triggerRect.x + 'px',
+                                    width: triggerRect.width,
                                     height: triggerRect.height,
                                     ease: 'power3.out'
                                  });
-                           
+
                                 if ( trigger.classList.contains('fx-load-scroll-after') ) {
                                     holder.classList.add('fx-load-scroll-after');
                                 }
-                                
+
                                 holder.classList.add('fx-load-ready', 'fx-load-fi');
                             }
- 
+
                         }
 
-                    } 
+                    }
 
                     // If layer menu is open set delay at 1s
                     if ( document.querySelector('.menu-button--open') ) {
                         delay = 1;
-                    }   
+                    }
                     theme.menu.closeMenuLayer();
 
                     if ( enableLoader === true ) {
@@ -630,14 +630,14 @@ var theme = (function() {
                     gsap.to('.loader__image', {scale: 1.2, opacity: 0, duration: 0.3, delay: 0.4, ease: 'power3.out'});
                     gsap.from('.header__logo', {duration: 0.3, y:-30, opacity: 0, delay: 0.5, ease: 'power3.out'} );
 
-                    // Loader 
+                    // Loader
                     gsap.to('.loader', {opacity: 0, duration:0.5, delay: 1.3, ease: 'power3.out', onComplete:function(){
                         gsap.set('.loader', {visibility:'hidden'});
                         if ( doVisible === true ) {
                             theme.visible();
                         }
                     }});
-                    
+
                     // Nav
                     let button_delay = 0.6;
                     if ( document.querySelector(".menu-top.classic") ) {
@@ -649,7 +649,7 @@ var theme = (function() {
                     var tl = gsap.timeline({repeat: 0, repeatDelay: 0, delay:0.6});
                     tl.staggerFrom(".menu-top div > ul > li > a", 0.5, {opacity:0, y:-100, ease: 'power3.out'}, 0.1);
                     gsap.from('.menu-button', {duration: 0.3, scale:0, opacity: 0, delay: button_delay, ease: 'power3.out'} );
-                    
+
                     // Remove firstload class
                     gsap.set('body',{delay: button_delay, onComplete: function(){
                          html.classList.remove('ax--firstload');
@@ -665,43 +665,43 @@ var theme = (function() {
                         if ( holder.classList.contains('fx-load-ready') ) {
 
                             document.body.classList.add('is-fx-load');
-                            
+
                             if ( holder.classList.contains('fx-load-fi') ) {
                                 let img = document.querySelector('.fx-load-fi-target');
                                 if ( img ) {
 
-                                
+
                                     let imgRect = img.getBoundingClientRect();
                                     let src = img.src;
 
                                      gsap.to(holder, {
                                         duration: 0.8,
-                                        xPercent:0, 
-                                        left:imgRect.x + 'px', 
-                                        yPercent:0, 
-                                        top:imgRect.y + 'px', 
-                                        x:0, 
-                                        y:0, 
-                                        width: imgRect.width, 
-                                        height: imgRect.height, 
+                                        xPercent:0,
+                                        left:imgRect.x + 'px',
+                                        yPercent:0,
+                                        top:imgRect.y + 'px',
+                                        x:0,
+                                        y:0,
+                                        width: imgRect.width,
+                                        height: imgRect.height,
                                         ease: 'power2.out'
                                     });
 
                                     // Set delay to clear holder styles
                                     fxDelay = 600;
                                 }
-                                
+
                             }
 
                         }
                     }
 
                     if ( doVisible === true ) {
-                        
+
                         // Remove Holder effects
                         setTimeout(() => {
 
-                            // hide Loader 
+                            // hide Loader
                             gsap.to('.loader', {opacity: 0, duration:0.5, delay: 0, ease: 'power3.out', onComplete: function() {
                                 holder.removeAttribute('style');
                                 holder.classList.remove('fx-load-ready');
@@ -721,8 +721,8 @@ var theme = (function() {
 
 
                 }
-                
-                
+
+
                 html.classList.remove('ax--loading');
 
                 /* Fire Event */
@@ -735,11 +735,11 @@ var theme = (function() {
             },
 
             redirectStart: function(url) {
-           
+
                 if ( url !== false && url !== undefined ) {
                     window.location.href = url;
                 }
-              
+
             },
 
             showLoader : function() {
@@ -758,7 +758,7 @@ var theme = (function() {
 
 
         /* ==================================================
-          Navigation 
+          Navigation
         ================================================== */
         menu: {
             init: function() {
@@ -773,9 +773,9 @@ var theme = (function() {
                     li.data = {};
                     li.addEventListener('mouseenter', m.showChildren );
                     li.addEventListener('mouseleave', m.hideChildren );
-                    li.addEventListener('click', m.hideChildren );    
+                    li.addEventListener('click', m.hideChildren );
                 }
-                
+
             },
             showChildren : function(e) {
                 let li = this;
@@ -791,7 +791,7 @@ var theme = (function() {
                     }
                      ul.style.display = 'block';
                     li.data = {showTimer: setTimeout(function() {
-                       
+
                         gsap.to(ul, {opacity: 1, x: 0, duration: 0.3, ease: 'power1.out'});
                     }, 50)}
 
@@ -800,7 +800,7 @@ var theme = (function() {
                     let width = rect.width;
                     let windowWidth = window.innerWidth;
                     let isEntirelyVisible = (posLeft + width <= windowWidth);
-                    
+
                     if ( li.classList.contains('super-menu') === false ) {
                         if ( ! isEntirelyVisible ) {
                             ul.classList.add('edge');
@@ -842,7 +842,7 @@ var theme = (function() {
                        theme.menu.openMenuLayer();
                     }
                 });
-         
+
             },
 
             openMenuLayer : function() {
@@ -899,7 +899,7 @@ var theme = (function() {
                                 slideTrigger.setAttribute('href','#');
                                 li.insertBefore(slideTrigger,link.nextSibling);
                             }
-                           
+
                             slideTrigger.addEventListener('click', e => {
                                 if ( ul.classList.contains('is-open') ) {
                                     gsap.to(ul, {height: 0, opacity:0, duration:0.5, ease: 'power3.out', onComplete:function(){
@@ -911,11 +911,11 @@ var theme = (function() {
                                         gsap.to(ul, {height: 'auto', opacity:1, duration:0.5, ease: 'power3.out'});
                                         ul.classList.add('is-open');
                                     }});
-                                     
-                                   
+
+
                                 }
                             });
-                          
+
                         }
                     }
 
@@ -941,11 +941,11 @@ var theme = (function() {
                         gsap.set(c.ball, { xPercent: -50, yPercent: -50 });
                         document.addEventListener("mousemove", c.mouseMove);
                         gsap.ticker.add( c.updatePosition );
-                 
+
                         // Hover actions
                         c.hoverables('a[href], .fx-cursor, input[type="submit"]');
 
-                        // Remove cursor old actions classes 
+                        // Remove cursor old actions classes
                         document.addEventListener('click', e => {
                             c.ball.classList = '';
                         });
@@ -957,7 +957,7 @@ var theme = (function() {
                 c.pos.x += (c.mouse.x - c.pos.x) * c.ratio;
                 c.pos.y += (c.mouse.y - c.pos.y) * c.ratio;
                 gsap.set(c.ball, { x: c.pos.x, y: c.pos.y });
-                
+
             },
             mouseMove : function(e) {
                 let c = theme.cursor;
@@ -970,7 +970,7 @@ var theme = (function() {
                 let extraClass = null;
                 let cursorBody = document.querySelector('.cursor__body-inner');
                 var state = null;
-                
+
                 let hoverImages = document.querySelectorAll('.fx-hover-image');
                 if ( hoverImages.length > 0 ) {
                     // Add special holder for images preview
@@ -982,7 +982,7 @@ var theme = (function() {
                         imgHolder.className = 'cursor__body-image';
                         cursorBody.appendChild(imgHolder);
                     }
-                 
+
                 }
 
                 // Listeners
@@ -1011,7 +1011,7 @@ var theme = (function() {
                             c.ball.classList.add('hover');
                         }
                         state = 'over';
-                        
+
                     });
 
                     hoverables[i].addEventListener('mouseleave', e => {
@@ -1019,17 +1019,17 @@ var theme = (function() {
                         c.ball.classList = '';
                         if ( t.classList.contains('fx-hover-image') ) {
                              let imgHover = t.querySelector('img');
-                            
+
                              setTimeout( e => {
                                 if ( imgHolder.src == imgHover.src && state === 'out' ) {
-                                    gsap.set(imgHolder, {visibility: 'hidden' });      
+                                    gsap.set(imgHolder, {visibility: 'hidden' });
                                 }
                                 state = 'out'
                             },300);
                             gsap.to(imgHolder, {opacity: 0, duration: 0.3, ease: 'power3.out'});
-                            
+
                         }
-                       
+
                     });
                 }
             },
@@ -1040,7 +1040,7 @@ var theme = (function() {
                         if (ballImage) {
                             ballImage.removeAttribute('style');
                         }
-                     
+
                             theme.cursor.hoverables(sel);
                     }
                 }
@@ -1049,7 +1049,7 @@ var theme = (function() {
 
 
         /* ==================================================
-          Magnet Effect 
+          Magnet Effect
         ================================================== */
         magnet : {
             ball : document.querySelector('#cursor'),
@@ -1078,10 +1078,10 @@ var theme = (function() {
                 let magnets = document.querySelectorAll(sel);
 
                 for ( let magnet of magnets ) {
-                        
+
                     // Don't duplicate magneto
                     if ( ! magnet.classList.contains('magneto--ready') ) {
-                       
+
                         // create wrapper container
                         let wrapper = document.createElement('div');
                         magnet.classList.add('magneto--ready');
@@ -1177,11 +1177,11 @@ var theme = (function() {
                 if ( WPBar ) {
                     WPBar.style.position = 'fixed';
                 }
-                
+
 
                 // Set global resize event
-                ev.resize = window.document.createEvent('UIEvents'); 
-                ev.resize.initUIEvent('resize', true, false, window, 0); 
+                ev.resize = window.document.createEvent('UIEvents');
+                ev.resize.initUIEvent('resize', true, false, window, 0);
 
                 /* Scroll / Resize Events */
                 if ( document.body.classList.contains("is-smoothscroll") === false ) {
@@ -1201,7 +1201,7 @@ var theme = (function() {
                     header.classList.add('header--scrolled');
                 } else {
                     header.classList.remove('header--scrolled');
-                } 
+                }
 
                 // Parallax
                 theme.events.doParallax(y);
@@ -1211,7 +1211,7 @@ var theme = (function() {
 
                 // Fade
                 theme.events.doFade(y);
-                
+
                 // Waypoints
                 if ( theme.events.waypoints[0] ) {
                     let waypoints = theme.events.waypoints;
@@ -1224,15 +1224,15 @@ var theme = (function() {
                     for (let i in waypoints ) {
                         let top = y + winHeight;
                         let left = x + winWidth;
-                        
+
                         if ( top >= waypoints[i].posY && left >= waypoints[i].posX ) {
-                            
+
 
                             // Avoid animation restart
                             if ( waypoints[i].el.classList.contains('done') === false ) {
 
                                 delay = delay+delayStep;
-                                
+
                                 if ( waypoints[i].el.classList.contains('.waypoint-delay') ) {
                                     target = waypoints[i].el;
                                     target.style.transitionDelay = delay+"s";
@@ -1240,7 +1240,7 @@ var theme = (function() {
                                 else if ( waypoints[i].el.querySelector('.waypoint-delay') ) {
                                     target = waypoints[i].el.querySelector('.waypoint-delay');
                                     target.style.transitionDelay = delay+"s";
-                                } 
+                                }
 
 
                                 waypoints[i].el.classList.add('done');
@@ -1252,7 +1252,7 @@ var theme = (function() {
                                     let tl = gsap.timeline({repeat: 0, repeatDelay: 0, delay:0});
                                     let staggerObj = {duration: 0.3, opacity:1, y:0, ease: 'power3.out'};
                                     let speed = 0.5;
-                                    if ( s.getAttribute('data-stagger') ) { 
+                                    if ( s.getAttribute('data-stagger') ) {
                                         var parsedObj = JSON.parse(s.getAttribute('data-stagger'));
                                         if ( parsedObj ) {
                                             staggerObj = parsedObj;
@@ -1267,11 +1267,11 @@ var theme = (function() {
                     }
 
                 }
-                
+
             },
 
-            // Scroll Listener 
-            scrollListener: function() {    
+            // Scroll Listener
+            scrollListener: function() {
                 let x = window.pageXOffset || document.documentElement.scrollLeft;
                 let y = window.pageYOffset || document.documentElement.scrollTop;
                 let obj = {
@@ -1281,7 +1281,7 @@ var theme = (function() {
                 theme.events.scrollActions(obj);
             },
 
-            // Fullscreen Scroll Listener 
+            // Fullscreen Scroll Listener
             FSscrollListener: function() {
                 let y = theme.events.fullScreenWrap.scrollTop;
                 let x = theme.events.fullScreenWrap.scrollLeft;
@@ -1291,10 +1291,10 @@ var theme = (function() {
                 }
                 theme.events.scrollActions(obj);
             },
-            
+
             // Resize Listener
             resizeListener: function() {
-               
+
             },
 
             // Waypoints
@@ -1315,12 +1315,12 @@ var theme = (function() {
                     ev.waypoints = {};
                 }
             },
-            
+
             // Fade
             doFade: function(y) {
-                
+
                 let fade = document.querySelector('.is-visible .fx-scroll-fade .fade-layer');
-                
+
                 if ( fade ) {
                     let fadeHeight = fade.offsetHeight;
                     fade.style.opacity =  y / fadeHeight;
@@ -1336,13 +1336,13 @@ var theme = (function() {
                     for(var i in images) {
 
                         let scrolledHeight= window.pageYOffset;
-                        
+
                         let elOffset = images[i].el.offsetTop;
                         let elHeight = images[i].el.offsetHeight;
 
                         if((elOffset > y + scrolledHeight) || (elOffset + elHeight < y)) { continue; }
                         gsap.to( images[i].el, 0.5, { backgroundPosition:'50% '+Math.round((elOffset - y)*3/50)+'px', ease:Power2.easeOut } );
-                    }   
+                    }
                 }
             },
             getParallax: function(){
@@ -1374,7 +1374,7 @@ var theme = (function() {
                         let elHeight = scrollEl[i].el.offsetHeight;
                         if((elOffset > y + scrolledHeight) || (elOffset + elHeight < y)) { continue; }
                         gsap.to( scrollEl[i].el, 0.5, { y: Math.round((elOffset - y)*3/(scrollEl[i].factor))+'px', scale: 1, ease:Power2.easeOut } );
-                    }   
+                    }
                 }
             },
             getParallaxScroll: function(){
@@ -1397,7 +1397,7 @@ var theme = (function() {
             // Update events
             update: function() {
                 let ev = theme.events;
-                
+
                 ev.getParallax();
                 ev.getParallaxScroll();
                 ev.getWaypoints();
@@ -1406,7 +1406,7 @@ var theme = (function() {
                     ev.fullScreenWrap = document.querySelector('#fs-scroll');
                     ev.fullScreenWrap.addEventListener('scroll', ev.FSscrollListener);
                 }
-                
+
                 // Run scroll function with initial parameteres
                 ev.scrollActions({x:0,y:0});
 
@@ -1416,7 +1416,7 @@ var theme = (function() {
 
 
         /* ==================================================
-          SmoothScroll 
+          SmoothScroll
         ================================================== */
 
         smoothScroll: {
@@ -1488,7 +1488,7 @@ var theme = (function() {
                         options.plugins['invertDelta'] = {
                             events: [/wheel/]
                         }
-                    } 
+                    }
 
                     theme.smoothScroll.scrollbarFullScreen = Scrollbar.init(fs, options);
                     theme.smoothScroll.scrollbarFullScreen.addListener(theme.smoothScroll.listener);
@@ -1504,7 +1504,7 @@ var theme = (function() {
 
 
         /* ==================================================
-          Small Helpers 
+          Small Helpers
         ================================================== */
         helpers : {
 
@@ -1517,16 +1517,16 @@ var theme = (function() {
                         let body = document.body;
                         body.classList.toggle('is-sidebar-open');
                     }
-                    
+
                     document.body.appendChild(sidebar);
                     setTimeout(()=>{ document.body.classList.add('is-sidebar-ready') }, 100);
-                    
+
                     let sidebar_trigger = document.querySelector('#sidebar__trigger');
                     let close_layer = document.querySelector('.sidebar__layer');
                     sidebar_trigger.addEventListener('click', toggle );
                     close_layer.addEventListener('click', toggle );
                     theme.cursor.update('.sidebar__layer');
-                    
+
                 }
             },
 
@@ -1543,7 +1543,7 @@ var theme = (function() {
             },
 
             scrollToPos : function(pos, duration = 0.5, delay = 0) {
-                
+
                 setTimeout( ()=> {
 
                     if ( isNaN( pos ) === false ) {
@@ -1558,7 +1558,7 @@ var theme = (function() {
                     }
 
                 }, delay )
-                
+
             },
 
         },
@@ -1620,7 +1620,7 @@ var theme = (function() {
 
 
         /* ==================================================
-          Prototypes 
+          Prototypes
         ================================================== */
         prototypes : function() {
 

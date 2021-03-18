@@ -12,14 +12,14 @@ Tags:custom-menu, threaded-comments
 */
 /*------------------------------------------------------------------
 
- ___      ___  _______  ___  ___  
-|"  \    /"  |/"     "||"  \/"  | 
- \   \  //  /(: ______) \   \  /  
-  \\  \/. ./  \/    |    \\  \/   
-   \.    //   // ___)_   /\.  \   
-    \\   /   (:      "| /  \   \  
-     \__/     \_______)|___/\___| 
-                                       
+ ___      ___  _______  ___  ___
+|"  \    /"  |/"     "||"  \/"  |
+ \   \  //  /(: ______) \   \  /
+  \\  \/. ./  \/    |    \\  \/
+   \.    //   // ___)_   /\.  \
+    \\   /   (:      "| /  \   \
+     \__/     \_______)|___/\___|
+
 
 ~ Vex by Rascals Themes 2020 ~
 
@@ -34,7 +34,7 @@ Tags:custom-menu, threaded-comments
 5. Helper Classes
 6. WordPress Core Styles
 7. Pagination
-8. Loader 
+8. Loader
 9. Layout
 10. Grid
 11. Header
@@ -45,8 +45,8 @@ Tags:custom-menu, threaded-comments
 16. Category / Tags / Archives / Search
 17. Comments
 18. Footer
-19. Widgets 
-20. Modules 
+19. Widgets
+20. Modules
 21. Elements
 22. Plugins
 */
@@ -149,7 +149,7 @@ body ::-webkit-scrollbar-thumb:hover {
 }
 
 /* ==================================================
-  3. Basic Elements & Classes 
+  3. Basic Elements & Classes
 ================================================== */
 /* Accent color: #16a085 */
 /* Set box sizing for all elements */
@@ -1086,7 +1086,7 @@ a img.aligncenter {
     display: block;
 }
 
-/* Separator */  
+/* Separator */
 .wp-block-separator {
     height: 1px;
     background-color: #FFFFFF;
@@ -1115,7 +1115,7 @@ a img.aligncenter {
     font-family: serif;
 }
 
-/* Widgets */ 
+/* Widgets */
 .wp-block-group__inner-container {
     padding:30px;
     margin-bottom:32px;
@@ -1182,7 +1182,7 @@ a img.aligncenter {
     color:#cccc;
 }
 
-/* Tags */ 
+/* Tags */
 .wp-block-tag-cloud a {
     display:inline-block;
     margin:2px;
@@ -1912,7 +1912,7 @@ a img.aligncenter {
     }
 }
 
-/* Main 
+/* Main
  ------------------------------ */
 .main-c {
     opacity: 0.2;
@@ -1990,6 +1990,9 @@ a img.aligncenter {
     line-height: 70px;
     -webkit-transition: color .2s ease-out;
     transition: color .2s ease-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .is-sidebar-open #sidebar__trigger {
@@ -2126,7 +2129,7 @@ a img.aligncenter {
 }
 
 /* ==================================================
-  10. Grid 
+  10. Grid
 ================================================== */
 .flex-grid {
     display: -webkit-flex;
@@ -3170,7 +3173,7 @@ li.is-open .menu-main__toggle:before {
     display:none
 }
 
-/* Menu Background */ 
+/* Menu Background */
 .menu-layer {
 	background-position: center center;
 	background-repeat: no-repeat;
@@ -3762,7 +3765,7 @@ li.is-open .menu-main__toggle:before {
     color: #252525;
     z-index: 1;
     height: 300px;
-    
+
 }
 
 .pt__title-big-text {
@@ -4101,9 +4104,9 @@ li.is-open .menu-main__toggle:before {
 }
 
 /* ==================================================
-  15. Blog 
+  15. Blog
 ================================================== */
-/* Post Footer  
+/* Post Footer
  -------------------------------- */
 .post-footer {
     display: flex;
@@ -4163,7 +4166,7 @@ li.is-open .menu-main__toggle:before {
 }
 
 /* ==================================================
-  16. Category / Tags / Archives / Search 
+  16. Category / Tags / Archives / Search
 ================================================== */
 /* Search
   -------------------------------- */
@@ -4551,7 +4554,7 @@ li.is-open .menu-main__toggle:before {
 }
 
 /* ==================================================
-  18. Footer 
+  18. Footer
 ================================================== */
 /* Footer */
 #footer {
@@ -4672,6 +4675,9 @@ li.is-open .menu-main__toggle:before {
     color: #111;
     text-align: center;
     line-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .socials__icon {
@@ -4682,6 +4688,9 @@ li.is-open .menu-main__toggle:before {
     text-align: center;
     border-radius: 50%;
     line-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .socials__icon .icon {
@@ -4834,7 +4843,7 @@ li.is-open .menu-main__toggle:before {
 }
 
 /* ==================================================
-  19. Widgets 
+  19. Widgets
 ================================================== */
 /* Basics styles
  -------------------------------- */
@@ -5264,7 +5273,7 @@ a.rsswidget img {
 }
 
 /* ==================================================
-  20. Modules 
+  20. Modules
 ================================================== */
 /*  Common
   -------------------------------- */
@@ -5960,7 +5969,7 @@ a.rsswidget img {
 }
 
 /* ==================================================
-  21. Elements 
+  21. Elements
 ================================================== */
 /* Messages
   -------------------------------- */
@@ -6106,7 +6115,7 @@ input[type="submit"]:hover, button:hover, .btn:hover {
     text-decoration: none;
 }
 
-/* Anim border 
+/* Anim border
  -------------------------------- */
 .anim-border {
     position: absolute;
@@ -6201,7 +6210,7 @@ html.no-touch a:hover .anim-border .anim-border__circle svg:last-child {
     mask-image: linear-gradient(180deg,transparent .88rem,#000 30%,#000 70%,transparent);
 }
 
-/* Thumbs 
+/* Thumbs
   -------------------------------- */
 .ithumb {
     display: inline-block;
@@ -6356,7 +6365,7 @@ html:not(.ax--loading) #cursor.hide .cursor__body {
     opacity: 0;
 }
 
-/* Close / Click 
+/* Close / Click
      -------------------------------- */
 html:not(.ax--loading) #cursor.close, html:not(.ax--loading) #cursor.click {
     mix-blend-mode: normal;
@@ -6630,7 +6639,7 @@ html.no-touch .fx-trigger:hover .fx-txt-a__text, html.no-touch a:hover .fx-txt-a
 }
 
 /* ==================================================
-  22. Animations 
+  22. Animations
 ================================================== */
 /* Blaster */
 @-webkit-keyframes anim--blaster {
@@ -6970,7 +6979,7 @@ html.no-touch .fx-trigger:hover .fx-txt-a__text, html.no-touch a:hover .fx-txt-a
 }
 
 /* ==================================================
-  22. Plugins 
+  22. Plugins
 ================================================== */
 /* Lightbox
  -------------------------------- */
@@ -7040,7 +7049,6 @@ body .mfp-arrow:hover {
     font-weight: bold;
 }
 .mod-album-2 .h2-line {
-    position: inherit;
     padding: 15px 0;
 }
 .mod-album-2 .h2-line h2 {
