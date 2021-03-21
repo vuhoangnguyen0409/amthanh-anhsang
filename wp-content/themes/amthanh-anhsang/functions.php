@@ -99,4 +99,12 @@ add_filter('body_class', function ($classes) {
     return $classes;
 });
 
+function get_custom_cat_template($single_template) {
+   global $post;
+   if ( in_category( 'amthanh-anhsang' )) {
+      $single_template = dirname( __FILE__ ) . '/single-amthanh-anhsang.php';
+   }
+   return $single_template;
+}
+add_filter( "single_template", "get_custom_cat_template" ) ;
 ?>

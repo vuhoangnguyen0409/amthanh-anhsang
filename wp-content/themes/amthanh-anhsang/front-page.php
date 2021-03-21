@@ -12,8 +12,8 @@
 						<?php $args = array(
 								'posts_per_page'   => 10,
 								'offset'           => 0,
-								'category'         => 'amthanh-anhsang',
-								'category_name'    => '',
+								'category'         => '',
+								'category_name'    => 'amthanh-anhsang',
 								'orderby'          => 'post_date',
 								'order'            => 'ASC',
 								//'order'            => 'DESC',
