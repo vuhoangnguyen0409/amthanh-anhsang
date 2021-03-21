@@ -107,4 +107,35 @@ function get_custom_cat_template($single_template) {
    return $single_template;
 }
 add_filter( "single_template", "get_custom_cat_template" ) ;
+
+//Numbered Pagination
+if ( !function_exists( 'wpex_pagination' ) ) {
+ function wpex_pagination() {
+ global $wp_query;
+ //$prev_arrow = is_rtl() ? '<img height="20px" src="'.get_template_directory_uri().'/img/common/back.gif" alt="back" />' : '<img height="20px" src="'.get_template_directory_uri().'/images/back.png" alt="back" />';
+ //$next_arrow = is_rtl() ? '<img height="20px" src="'.get_template_directory_uri().'/img/common/next.gif" alt="next" />' : '<img height="20px" src="'.get_template_directory_uri().'/images/next.png" alt="next" />';
+$big = 999999999; // need an unlikely integer
+$pages = paginate_links( array(
+        'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+        'format' => '?paged=%#%',
+        'current' => max( 1, get_query_var('paged') ),
+        'total' => $wp_query->max_num_pages,
+        'type'  => 'array',
+  //'prev_text'  => $prev_arrow,
+  //'next_text'  =>$next_arrow
+    ) );
+    if( is_array( $pages ) ) {
+        $paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged');
+        echo '<nav class="navigation paging-navigation">
+         <div class="pagination loop-pagination">
+         ';
+        foreach ( $pages as $page ) {
+                echo "<a class='page-numbers'>$page</a>";
+        }
+       echo '</div>
+       <!-- .pagination -->
+      </nav>';
+        }
+ }
+}
 ?>

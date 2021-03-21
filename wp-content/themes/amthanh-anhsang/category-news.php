@@ -14,27 +14,20 @@ get_header();
    <div class="container container--narrow">
 
 
-     <?php $args = array(
-        'posts_per_page'   => 5,
-        'offset'           => 0,
-        'category'         => '',
+     <?php
+     $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+      $args = array(
         'category_name'    => 'tin-tuc',
-        'orderby'          => 'post_date',
-        'order'            => 'ASC',
-        //'order'            => 'DESC',
-        'include'          => '',
-        'exclude'          => '',
-        'meta_key'         => '',
-        'meta_value'       => '',
-        //'post_type'        => 'news',
-        'post_type'        => '',
-        'post_mime_type'   => '',
-        'post_parent'      => '',
-        'post_status'      => 'publish',
-        'suppress_filters' => true
+        'orderby' => 'date',
+   		 'post_type'        => 'post',
+   		 'post_status'      => 'publish',
+   		 'posts_per_page'   => 3,
+   		 'paged'=>$paged
       );
-      $posts_array = get_posts( $args );
-      foreach ( $posts_array as $post ) : setup_postdata( $post );
+      query_posts($args);
+  	 ?>
+  	<?php if ( have_posts() ):
+     while ( have_posts() ) :the_post();
         $thumbnail_id = get_post_thumbnail_id( $post->ID );
         $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);?>
         <div class="mod mod-news-1 is-waypoint  is-featured">
@@ -77,101 +70,21 @@ get_header();
          <div class="mod__bg" style="background-image:url(<?php the_post_thumbnail_url(); ?>);" ></div>
          <a class="mod__click fx-cursor fx-load fx-load-fz fx-load-scroll-after" href="<?php the_permalink(); ?>" data-cursor-class="click"></a>
         </div>
-    <?php endforeach; ?>
+        <?php
+        endwhile;
+        endif;
+        wpex_pagination();?>
 
 
-    <nav class="navigation paging-navigation">
-     <div class="pagination loop-pagination">
-      <span aria-current="page" class="page-numbers current">1</span>
-      <a class="page-numbers" href="https://rascalsthemes.com/demo/vex/demo1/news/page/2/">2</a>
-      <a class="next page-numbers" href="https://rascalsthemes.com/demo/vex/demo1/news/page/2/">&rarr;</a>
-     </div>
-     <!-- .pagination -->
-    </nav>
+
+
+
     <!-- .navigation -->
    </div>
    <!-- .container -->
 </div>
 <!-- .content -->
-<div id="sidebar">
-   <div class="sidebar__block sidebar--left">
-    <a href="#" id="sidebar__trigger"></a>
-    <div class="sidebar__inner">
-     <div class="sidebar__content">
-      <aside>
-         <aside id="search-3" class="widget widget_search">
-          <form method="get" id="searchform" class="searchform" action="https://rascalsthemes.com/demo/vex/demo1/">
-           <fieldset>
-            <span class="search-input-wrap">
-            <input type="text" placeholder="Search and hit enter" value="" name="s" id="s" />
-            </span>
-            <button type="submit" id="searchsubmit"><i class="icon icon-search"></i></button>
-           </fieldset>
-          </form>
-         </aside>
-         <aside id="recent-posts-3" class="widget widget_recent_entries">
-          <h3 class="widget-title">Recent Posts</h3>
-          <ul>
-           <li>
-            <a href="https://rascalsthemes.com/demo/vex/demo1/dj-max-drama-end-of-year-mixtape-is-the-only-music-you-need-this-holiday-season/">DJ Max Drama End of Year Mixtape Is the Only Music You Need This Holiday Season</a>
-           </li>
-           <li>
-            <a href="https://rascalsthemes.com/demo/vex/demo1/check-out-some-of-the-best-street-style-from-new-york/">Check Out Some of the Best Street Style From New York</a>
-           </li>
-           <li>
-            <a href="https://rascalsthemes.com/demo/vex/demo1/10-of-the-best-sneakers-for-women-and-man/">10 of the Best Sneakers for Women and Man</a>
-           </li>
-           <li>
-            <a href="https://rascalsthemes.com/demo/vex/demo1/black-and-orange-wireless-headset/">Black and orange wireless headset</a>
-           </li>
-           <li>
-            <a href="https://rascalsthemes.com/demo/vex/demo1/silvia-talks-about-her-music-video-blocks/">Silvia talks about her music video &quot;Blocks&quot;</a>
-           </li>
-          </ul>
-         </aside>
-         <aside id="recent-comments-3" class="widget widget_recent_comments">
-          <h3 class="widget-title">Recent Comments</h3>
-          <ul id="recentcomments">
-           <li class="recentcomments"><span class="comment-author-link">Peter</span> on <a href="https://rascalsthemes.com/demo/vex/demo1/event/fabric-ricardo-el-sonido-2/#comment-30">Fabric Ricardo El Sonido</a></li>
-           <li class="recentcomments"><span class="comment-author-link">Lara</span> on <a href="https://rascalsthemes.com/demo/vex/demo1/event/fabric-ricardo-el-sonido-2/#comment-29">Fabric Ricardo El Sonido</a></li>
-           <li class="recentcomments"><span class="comment-author-link">Peter</span> on <a href="https://rascalsthemes.com/demo/vex/demo1/event/modern-city/#comment-28">Modern City</a></li>
-           <li class="recentcomments"><span class="comment-author-link">Lara</span> on <a href="https://rascalsthemes.com/demo/vex/demo1/event/modern-city/#comment-27">Modern City</a></li>
-           <li class="recentcomments"><span class="comment-author-link">Peter</span> on <a href="https://rascalsthemes.com/demo/vex/demo1/event/fabric-ricardo-el-sonido/#comment-26">Astronaut Dub Bass Live Stage</a></li>
-          </ul>
-         </aside>
-         <aside id="archives-3" class="widget widget_archive">
-          <h3 class="widget-title">Archives</h3>
-          <ul>
-           <li><a href='https://rascalsthemes.com/demo/vex/demo1/2020/01/'>January 2020</a></li>
-           <li><a href='https://rascalsthemes.com/demo/vex/demo1/2019/12/'>December 2019</a></li>
-           <li><a href='https://rascalsthemes.com/demo/vex/demo1/2019/11/'>November 2019</a></li>
-           <li><a href='https://rascalsthemes.com/demo/vex/demo1/2019/04/'>April 2019</a></li>
-          </ul>
-         </aside>
-         <aside id="categories-3" class="widget widget_categories">
-          <h3 class="widget-title">Categories</h3>
-          <ul>
-           <li class="cat-item cat-item-2"><a href="https://rascalsthemes.com/demo/vex/demo1/category/fashion/">Fashion</a></li>
-           <li class="cat-item cat-item-3"><a href="https://rascalsthemes.com/demo/vex/demo1/category/reviews/">Reviews</a></li>
-           <li class="cat-item cat-item-1"><a href="https://rascalsthemes.com/demo/vex/demo1/category/uncategorized/">Uncategorized</a></li>
-          </ul>
-         </aside>
-         <aside id="tag_cloud-1" class="widget widget_tag_cloud">
-          <h3 class="widget-title">Tags</h3>
-          <div class="tagcloud"><a href="https://rascalsthemes.com/demo/vex/demo1/tag/fashion/" class="tag-cloud-link tag-link-5 tag-link-position-1" style="font-size: 13px;">fashion</a>
-           <a href="https://rascalsthemes.com/demo/vex/demo1/tag/mixtape/" class="tag-cloud-link tag-link-7 tag-link-position-2" style="font-size: 13px;">mixtape</a>
-           <a href="https://rascalsthemes.com/demo/vex/demo1/tag/new-york/" class="tag-cloud-link tag-link-8 tag-link-position-3" style="font-size: 13px;">new york</a>
-           <a href="https://rascalsthemes.com/demo/vex/demo1/tag/sneakers/" class="tag-cloud-link tag-link-9 tag-link-position-4" style="font-size: 13px;">sneakers</a>
-           <a href="https://rascalsthemes.com/demo/vex/demo1/tag/soundcloud/" class="tag-cloud-link tag-link-10 tag-link-position-5" style="font-size: 13px;">soundcloud</a>
-           <a href="https://rascalsthemes.com/demo/vex/demo1/tag/video/" class="tag-cloud-link tag-link-12 tag-link-position-6" style="font-size: 13px;">video</a>
-          </div>
-         </aside>
-      </aside>
-     </div>
-    </div>
-   </div>
-   <div class="sidebar__layer fx-cursor" data-cursor-class="close"></div>
-</div>
+
 <!-- Footer -->
 <?php get_footer();
 ?>
