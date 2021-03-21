@@ -19,6 +19,7 @@
 <?php wp_head(); ?>
 </head>
 <body  <?php body_class(); ?>>
+  <!-- https://rascalsthemes.com/demo/vex/demo1/beats/ -->
     <div class="loader theme-loader">
        <div class="loader__content">
           <div class="loader__image"><img src="<?php bloginfo('template_directory');?>/img/logo.svg" alt="Preloader Image"></div>

@@ -7,8 +7,8 @@ function add_style_css() {
   wp_enqueue_style( 'basicLightbox-css' );
   wp_register_style( 'vex-toolkit-css', get_template_directory_uri() . '/css/frontend-toolkit.css' );//inside page
   wp_enqueue_style( 'vex-toolkit-css' );
-  wp_register_style( 'animation', get_template_directory_uri() . '/css/animation.min.css' );//inside page
-  wp_enqueue_style( 'animation' );
+  wp_register_style( 'animations', get_template_directory_uri() . '/css/animations.min.css' );//inside page
+  wp_enqueue_style( 'animations' );
   wp_register_style( 'frontend', get_template_directory_uri() . '/css/frontend.min.css' );//inside page
   wp_enqueue_style( 'frontend' );
   wp_register_style( 'icomoon-font-css', get_template_directory_uri() . '/css/icomoon.css' );//inside page

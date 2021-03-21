@@ -1,52 +1,113 @@
-<?php 
-get_header(); ?>
 <?php
-        $array = array(
-            'post_type' => 'page',
-            'post_status' => 'publish',
-            'name'        => 'news',
-        );
-      $the_query = new WP_Query( $array );
-?>
-<div class="headLine">
-<?php if ( $the_query->have_posts() ) :
-        while( $the_query->have_posts() ) : $the_query->the_post();
-?>
-    <div class="bgHline inner"><?php if ( has_post_thumbnail() )  the_post_thumbnail() ;?></div>
-    <div class="hLine01"><h2><?php echo (get_field('title_image')) ? '<img src="'. get_field('title_image') .'" alt="'. get_the_title().'">' : get_the_title() ;?></h2></div>
-<?php endwhile; endif; ?>
-<?php wp_reset_postdata() ;?>
-</div>
+get_header(); ?>
 
-<div class="breadcrumb">
-    <ul class="clearfix inner">
-        <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">TOP</a></li>
-        <li><a href="<?php echo esc_url( home_url( '/news' ) ); ?>">新着情報</a></li>
-        <li><?php the_title() ?></li>
-    </ul>
-</div>
-            
-<div id="contents" class="clearfix">
-	<div id="main"  class="eleNew">
-		<?php  if (have_posts()): while(have_posts()): the_post(); ?>
-		<div class="blockDetail">
-			<h3 class="hlineNews"><?php the_title()  ;?></h3>
-			<p class="dateCreate"><?php echo get_the_date('Y.m.d') ;?></p>
-			<div class="mb30"> <?php if ( has_post_thumbnail() ) the_post_thumbnail(); ?></div>
-			<?php the_content() ;?>
-		</div>
-		<?php endwhile; ?>
-		<?php endif;?>
-            <div class="pagination pagiDetail">
-                <ul class="clearfix">
-                    <?php $next_post = get_next_post(); 
-                             $pre_post = get_previous_post(); 
-                    ?>
-                    <li><a href="<?php echo get_permalink( $pre_post->ID ); ?>" class="prev"><img src="<?php echo get_bloginfo('template_directory');?>/img/common/btn_back.png" alt="page" /></a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/news' ) ); ?>" class="list"><img src="<?php echo get_bloginfo('template_directory');?>/img/common/btn_list.png" alt="list" /></a></li>
-                    <li><a href="<?php echo get_permalink( $next_post->ID ); ?>" class="next"><img src="<?php echo get_bloginfo('template_directory');?>/img/common/btn_next.png" alt="next" /></a></li>
-                </ul>
+  <div class="rt-player-audio" data-audio="https://rascalsthemes.com/demo/vex/audio/Turbo.mp3"></div>
+
+  <?php  if (have_posts()): while(have_posts()): the_post();
+  $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);?>
+
+    <div class="content--fullscreen content--builder content--album">
+      <div id="fx-wgl-glitch" class="fs" data-image-src="<?php the_post_thumbnail_url(); ?>">
+        <canvas id="fx-wgl-glitch-canvas"></canvas>
+        <div class="fs__image" style="background-image: url(<?php the_post_thumbnail_url(); ?>)"></div>
+        <div class="fade-layer" style="opacity:0.8"></div>
+        <div id="fs-scroll" class="fs-scroll--v">
+          <div id="fs-scroll__content">
+            <div class="container container--full" style="padding-top:250px;padding-bottom:250px">
+              <div class="album album-left">
+                <div class="album__cover">
+                  <div class="rt-album-cover-wrap is-waypoint">
+                    <div class="fx-parallax-scroll" data-factor="15">
+                      <div class="ithumb ithumb-perspective">
+                        <a href="#" class="fx-cursor fx-lightbox" data-cursor-class="click" data-lb-id="lb-lb_605571ccec17a">
+                          <div class="ithumb-perspective__title hidden">
+                            <h2 class="fx-txt-b"><span class="fx-txt-b__text delay-06"><?php the_title() ?></span></h2>
+                          </div>
+                          <div class="ithumb-perspective__img">
+                            <div class="img">
+                              <img src="<?php the_post_thumbnail_url(); ?>" alt="<?php echo $alt; ?>" class="fx-load-fi-target">
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div id="lb-lb_605571ccec17a" class="lightbox__content">
+                      <div class="lightbox__inner lightbox__image">
+                        <img src="<?php the_post_thumbnail_url(); ?>" alt="City Life">
+                        <span class="lightbox__title"><?php the_title()  ;?></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="album__content">
+                  <div class="content-title is-waypoint">
+                    <div class="content-title__inner">
+                      <h1 class="pt__title-h fx-txt-b entry-title size-medium"><span class="fx-txt-b__text delay-01"><?php the_title()  ;?></span></h1>
+                    </div>
+                  </div>
+                  <div class="album-buttons is-waypoint anim-stagger " data-stagger='{"duration":0.3, "opacity":1, "y":0, "ease": "power3.out"}'><a href="#" class="album-button stagger-item"><span class="album-button__icon icon icon-itunes-filled"></span><span class="album-button__title">Buy on <br> iTunes</span></a><a href="#" class="album-button stagger-item"><span class="album-button__icon icon icon-googleplay"></span><span class="album-button__title">Buy on <br>GooglePlay</span></a>
+                    <a
+                      href="#" class="album-button stagger-item"><span class="album-button__icon icon icon-amazon"></span><span class="album-button__title">Buy on <br>Amazon</span></a>
+                  </div>
+                  <div id="audio-1605571ccec627" class="audio-player rascals-player-list anim-stagger is-waypoint " data-stagger='{"duration":0.3, "opacity":1, "y":0, "ease": "power2.out"}'>
+
+                    <?php
+
+// Check rows exists.
+if( have_rows('detail') ):
+
+    // Loop through rows.
+    while( have_rows('detail') ) : the_row();
+
+        // Load sub field value.
+        $detail_name = get_sub_field('detail_name');
+        $detail_content = get_sub_field('detail_content');
+        // Do something...?>
+        <div class="audio-player__item rascals-player-list__item stagger-item has-buttons">
+                   <div class="audio-player__row">
+                      <span class="audio-player__state" data-nr="1"><span class="audio-player__loader"></span></span><a href="/" class="rascals-player audio-player__track" data-list="audio-16056b682750cd"  data-nr="1" data-react-with=".rt-album-cover"></a>
+                      <div class="audio-player__meta player-meta">
+                         <h5 class="player-meta__title"><span class="player-meta__nr">1</span><?php echo $detail_name;?></h5>
+                         <span class="player-meta__desc"><?php echo $detail_content;?></span>
+                      </div>
+                      <div class="audio-player__buttons"><a class="wave-link" href="http://link_here" target="_self">Download</a></div>
+                   </div>
+                   <div class="audio-player__ctrl audio-ctrl audio-player__row"><span class="audio-ctrl__elapsed"></span><span class="audio-ctrl__total"></span><span class="audio-ctrl__progress"><span class="audio-ctrl__position"></span></span></div>
+                </div>
+    <?php
+    // End loop.
+    endwhile;
+
+// No value.
+else :
+    // Do something...
+endif;?>
+                  </div>
+                  <?php the_content() ;?>
+                  <div class="post-footer">
+                    <div class="share">
+                      <span class="icon icon-share"></span>
+                      <a class="share-button fb-share-btn" target="_blank" href="http://www.facebook.com/sharer.php?u=https://rascalsthemes.com/demo/vex/demo1/album/city-life/"><span class="icon icon-facebook"></span></a>
+                      <a class="share-button twitter-share-btn" target="_blank" href="http://twitter.com/share?url=https://rascalsthemes.com/demo/vex/demo1/album/city-life/"><span class="icon icon-twitter"></span></a>
+                      <a class="share-button linkedin-share-btn" target="_blank" href="https://www.linkedin.com/cws/share?url=https://rascalsthemes.com/demo/vex/demo1/album/city-life/"><span class="icon icon-linkedin"></span></a>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
             </div>
-	</div>
-</div>
+          </div>
+          <!-- #fs-scroll__content -->
+        </div>
+        <!-- #fs-scroll -->
+      </div>
+      <!-- .fx -->
+  <?php endwhile; ?>
+  <?php endif;?>
+
+
+
+
+
+
 <?php get_footer(); ?>
