@@ -26,4 +26,5 @@
 </div>
 <?php endwhile; ?>
 <?php endif;?>
+<?php include('side.php');?>
 <?php get_footer(); ?>
