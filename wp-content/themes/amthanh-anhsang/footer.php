@@ -68,5 +68,22 @@ script src = "assets/js/jquery.min.js" > < /script>
 
 	-->
 	<?php wp_footer(); ?>
-    
+  <script type="text/javascript">
+  jQuery.noConflict();
+      (function($) {
+        $("#tim_kiem").keyup(function(){
+           //alert($(this).val());
+           var tikkiem = $(this).val();
+              $.ajax({
+                  type : 'POST',
+                  data : {'action' : 'timkiem', 'tikkiem' : tikkiem},
+                  url : "<?=$url_post;?>",
+                  success : function (resp){
+                      //alert(resp);
+                      $(".search-result").html(resp);
+                  }
+              });
+          });
+        })(jQuery);
+       </script>
 	</html>

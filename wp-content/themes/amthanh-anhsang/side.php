@@ -6,10 +6,10 @@
       <aside>
          <aside id="search-3" class="widget widget_search">
              <form class="search-form" action="">
- 				<input type="text" name="tim-kiem" id="tim_kiem" class="text-center" placeholder="Search">
- 				<button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
- 				<ul class="search-result""></ul>
- 			</form>
+       				<input type="text" name="tim-kiem" id="tim_kiem" class="text-center tim_kiem" placeholder="Search">
+       				<button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+       				<ul class="search-result""></ul>
+       			</form>
           <form method="get" id="searchform" class="searchform" action="">
            <fieldset>
             <span class="search-input-wrap">
