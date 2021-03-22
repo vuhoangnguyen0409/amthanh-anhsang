@@ -84,7 +84,6 @@ get_header();
    <!-- .container -->
 </div>
 <!-- .content -->
-<?php include('side.php');?>
 <!-- Footer -->
 <?php get_footer();
 ?>

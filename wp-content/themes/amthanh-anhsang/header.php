@@ -17,6 +17,23 @@
           ?>
 </title>
 <?php wp_head(); ?>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js">
+    $(document).ready(function(){
+        $("#tim_kiem").keyup(function(){
+           alert($(this).val());
+            var tikkiem = $(this).val();
+            $.ajax({
+                type : 'POST',
+                data : {'action' : 'timkiem', 'tikkiem' : tikkiem},
+                url : "<?=$url_post;?>",
+                success : function (resp){
+                    //alert(resp);
+                    $(".search-result").html(resp);
+                }
+            });
+        });
+    });
+</script>
 </head>
 <body  <?php body_class(); ?>>
   <!-- https://rascalsthemes.com/demo/vex/demo1/beats/ -->

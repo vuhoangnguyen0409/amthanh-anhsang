@@ -5,10 +5,15 @@
      <div class="sidebar__content">
       <aside>
          <aside id="search-3" class="widget widget_search">
-          <form method="get" id="searchform" class="searchform" action="https://rascalsthemes.com/demo/vex/demo1/">
+             <form class="search-form" action="">
+ 				<input type="text" name="tim-kiem" id="tim_kiem" class="text-center" placeholder="Search">
+ 				<button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+ 				<ul class="search-result""></ul>
+ 			</form>
+          <form method="get" id="searchform" class="searchform" action="">
            <fieldset>
             <span class="search-input-wrap">
-            <input type="text" placeholder="Search and hit enter" value="" name="s" id="s" />
+            <input type="text" placeholder="Search and hit enter" value="" name="s" id="s"  />
             </span>
             <button type="submit" id="searchsubmit"><i class="icon icon-search"></i></button>
            </fieldset>
@@ -17,21 +22,23 @@
          <aside id="recent-posts-3" class="widget widget_recent_entries">
           <h3 class="widget-title">Recent Posts</h3>
           <ul>
+              <?php $args = array(
+                      'posts_per_page'   => 5,
+                      'offset'           => 0,
+                      'category'         => '',
+                      'category_name'    => '',
+                      'orderby'          => 'post_date',
+                      'order'            => 'ASC',
+                      //'order'            => 'DESC',
+                      'post_status'      => 'publish',
+                      'suppress_filters' => true
+                  );
+                  $posts_array = get_posts( $args );
+          foreach ( $posts_array as $post ) : setup_postdata( $post );?>
            <li>
-            <a href="https://rascalsthemes.com/demo/vex/demo1/dj-max-drama-end-of-year-mixtape-is-the-only-music-you-need-this-holiday-season/">DJ Max Drama End of Year Mixtape Is the Only Music You Need This Holiday Season</a>
+            <a href="<?php the_permalink(); ?>"><?php the_title() ?></a>
            </li>
-           <li>
-            <a href="https://rascalsthemes.com/demo/vex/demo1/check-out-some-of-the-best-street-style-from-new-york/">Check Out Some of the Best Street Style From New York</a>
-           </li>
-           <li>
-            <a href="https://rascalsthemes.com/demo/vex/demo1/10-of-the-best-sneakers-for-women-and-man/">10 of the Best Sneakers for Women and Man</a>
-           </li>
-           <li>
-            <a href="https://rascalsthemes.com/demo/vex/demo1/black-and-orange-wireless-headset/">Black and orange wireless headset</a>
-           </li>
-           <li>
-            <a href="https://rascalsthemes.com/demo/vex/demo1/silvia-talks-about-her-music-video-blocks/">Silvia talks about her music video &quot;Blocks&quot;</a>
-           </li>
+           <?php endforeach; ?>
           </ul>
          </aside>
          <aside id="recent-comments-3" class="widget widget_recent_comments">
@@ -44,15 +51,15 @@
            <li class="recentcomments"><span class="comment-author-link">Peter</span> on <a href="https://rascalsthemes.com/demo/vex/demo1/event/fabric-ricardo-el-sonido/#comment-26">Astronaut Dub Bass Live Stage</a></li>
           </ul>
          </aside>
-        
+
          <aside id="tag_cloud-1" class="widget widget_tag_cloud">
           <h3 class="widget-title">Tags</h3>
-          <div class="tagcloud"><a href="https://rascalsthemes.com/demo/vex/demo1/tag/fashion/" class="tag-cloud-link tag-link-5 tag-link-position-1" style="font-size: 13px;">fashion</a>
-           <a href="https://rascalsthemes.com/demo/vex/demo1/tag/mixtape/" class="tag-cloud-link tag-link-7 tag-link-position-2" style="font-size: 13px;">mixtape</a>
-           <a href="https://rascalsthemes.com/demo/vex/demo1/tag/new-york/" class="tag-cloud-link tag-link-8 tag-link-position-3" style="font-size: 13px;">new york</a>
-           <a href="https://rascalsthemes.com/demo/vex/demo1/tag/sneakers/" class="tag-cloud-link tag-link-9 tag-link-position-4" style="font-size: 13px;">sneakers</a>
-           <a href="https://rascalsthemes.com/demo/vex/demo1/tag/soundcloud/" class="tag-cloud-link tag-link-10 tag-link-position-5" style="font-size: 13px;">soundcloud</a>
-           <a href="https://rascalsthemes.com/demo/vex/demo1/tag/video/" class="tag-cloud-link tag-link-12 tag-link-position-6" style="font-size: 13px;">video</a>
+          <div class="tagcloud">
+           <a href="/" class="tag-cloud-link" style="font-size: 13px;">Sự Kiện Phú Quốc</a>
+           <a href="/" class="tag-cloud-link" style="font-size: 13px;">Âm Thanh - Ánh Sáng</a>
+           <a href="/" class="tag-cloud-link" style="font-size: 13px;">Event</a>
+           <a href="/" class="tag-cloud-link" style="font-size: 13px;">Màn hình Led</a>
+           <a href="/" class="tag-cloud-link" style="font-size: 13px;">Lễ hội</a>
           </div>
          </aside>
       </aside>

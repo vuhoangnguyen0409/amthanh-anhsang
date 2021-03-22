@@ -3,6 +3,7 @@
 
 <!-- Footer -->
 <!-- Footer container -->
+<?php include('side.php');?>
 <footer id="footer" class="container container--full">
    <div class="footer__inner">
 	  <div class="footer__left">
@@ -67,4 +68,5 @@ script src = "assets/js/jquery.min.js" > < /script>
 
 	-->
 	<?php wp_footer(); ?>
+    
 	</html>

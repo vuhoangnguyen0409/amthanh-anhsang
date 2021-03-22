@@ -138,4 +138,27 @@ $pages = paginate_links( array(
         }
  }
 }
+// search-form
+add_action('wp_ajax_timkiem', 'timkiem');
+add_action('wp_ajax_nopriv_timkiem', 'timkiem');
+function timkiem() {
+    global $wpdb;
+    $data = array();
+    $response = '';
+    if(isset($_POST['tikkiem']) && $_POST['tikkiem']){
+        $args = array(
+            'post_type' => array( 'post','item'  ),
+            's' => trim($_POST['tikkiem']),
+            'posts_per_page' => -1
+        );
+    }else{
+        $args = array(  'post_type' => post, 'posts_per_page' => -1);
+    }
+    $myposts = get_posts( $args );
+    foreach ( $myposts as $post ) : setup_postdata( $post );
+        $response .= '<li><a href="'. get_the_permalink($post->ID).'"><span class="price">'.get_the_title($post->ID).'</span></a></li>';
+    endforeach;
+    echo($response);
+    die();
+}
 ?>
