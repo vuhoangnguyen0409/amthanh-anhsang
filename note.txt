@@ -1,0 +1,15 @@
+Domain:      amthanhphuquoc.com
+Username:    amthanhpq
+Password:    Fe9Na1Mw
+
+http://45.117.171.204/phpmyadmin/?fbclid=IwAR1Lg4pOuiJfOYeUa9mp4JpqkT_eLyaz4umxZsdsYtVm9ivyczxssUNNWkA
+Database:    amthanhpq_db
+Username:    amthanhpq_user
+Password:    PjDn3byV
+
+
+http://amthanhphuquoc.com/wp-admin/
+user: nguyen.vuhoang
+pass: ttt7.talg8iams
+
+https://rascalsthemes.com/demo/vex/demo1/beats/

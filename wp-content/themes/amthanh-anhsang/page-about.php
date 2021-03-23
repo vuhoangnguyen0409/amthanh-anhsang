@@ -13,7 +13,7 @@ get_header();
             <div class="container container--narrow" style="padding-top:300px;padding-bottom:300px">
                <div data-elementor-type="wp-page" data-elementor-id="5" class="elementor elementor-5" data-elementor-settings="[]">
                   <div class="elementor-inner">
-                     <?php if (have_posts()): while (have_posts()): the_post(); the_content(); endwhile; endif; ?> </section>
+                     <?php if (have_posts()): while (have_posts()): the_post(); the_content(); endwhile; endif; ?>
                   </div>
                </div>
             </div>

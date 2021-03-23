@@ -1,6 +1,5 @@
 <?php get_header();
 ?>
-	  <div class="rt-player-audio" data-audio="https://rascalsthemes.com/demo/vex/audio/Turbo.mp3"></div>
 	  <div class="content--horizontal albums">
 		 <div class="fx-perspective fs">
 			<div class="fs__image fx-perspective__image" style="background-image: url(<?php bloginfo('template_directory');?>/img/bg/parallax-bg.jpg)"></div>

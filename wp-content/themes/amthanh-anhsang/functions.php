@@ -19,6 +19,8 @@ function add_style_css() {
   wp_enqueue_style( 'vex-style-css' );
   wp_register_style( 'woocommerce-custom-style-css', get_template_directory_uri() . '/css/wc-custom-style.css' );//inside page
   wp_enqueue_style( 'woocommerce-custom-style-css' );
+  wp_register_style( 'post-72-css', get_template_directory_uri() . '/css/post-72.css' );//inside page
+  wp_enqueue_style( 'post-72-css' );
 }
 add_action( 'wp_enqueue_scripts', 'add_style_css' );
 //js
