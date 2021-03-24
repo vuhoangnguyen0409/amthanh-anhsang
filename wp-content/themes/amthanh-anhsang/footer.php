@@ -10,18 +10,20 @@
 		 <div class="footer__left-inner">
 			<div class="socials fx-trigger fx-cursor" data-cursor-class="hover">
 			   <ul class="socials__list">
+           <?php
+   // vars
+   $links = get_field('social_links', 'option');
+   if( $links ): ?>
 				  <li class="trans-05 delay-03">
-					 <div class="magneto"><a href="#" class="socials__link social--instagram"><span class="icon icon-instagram"></span></a></div>
+					 <div class="magneto"><a target='_blank' href="<?php echo $links['instagram']['url']; ?>" class="socials__link social--instagram"><span class="icon icon-instagram"></span></a></div>
 				  </li>
 				  <li class="trans-05 delay-02">
-					 <div class="magneto"><a href="http://facebook" class="socials__link social--facebook"><span class="icon icon-facebook"></span></a></div>
+					 <div class="magneto"><a target='_blank' href="<?php echo $links['facebook']['url']; ?>" class="socials__link social--facebook"><span class="icon icon-facebook"></span></a></div>
 				  </li>
 				  <li class="trans-05 delay-01">
-					 <div class="magneto"><a href="#" class="socials__link social--twitter"><span class="icon icon-twitter"></span></a></div>
+					 <div class="magneto"><a target='_blank' href="<?php echo $links['twitter']['url']; ?>" class="socials__link social--twitter"><span class="icon icon-twitter"></span></a></div>
 				  </li>
-				  <li class="trans-05 delay-00">
-					 <div class="magneto"><a href="#" class="socials__link social--bandcamp"><span class="icon icon-bandcamp"></span></a></div>
-				  </li>
+          <?php endif; ?>
 			   </ul>
 			   <span class="socials__icon magneto"><span class="icon icon-share"></span></span>
 			   <div class="fx-txt-a socials__text">
