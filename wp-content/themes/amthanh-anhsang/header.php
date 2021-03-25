@@ -36,7 +36,7 @@
             <?php
               $logo = get_field('logo', 'option');	//var_dump($logo); die();
               if( $logo ): ?>
-             <a href="/"><img src="<?php bloginfo('template_directory');?>/img/logo.svg" alt="<?php echo $logo['logo-alt']; ?>"></a>
+             <a href="/"><img src="<?php echo $logo['logo-img']['url']; ?>" alt="<?php echo $logo['logo-alt']; ?>"></a>
              <?php endif; ?>
           </div>
           <div class="header__menu header__menu-hybrid menu">
