@@ -141,29 +141,6 @@ $pages = paginate_links( array(
         }
  }
 }
-// search-form
-add_action('wp_ajax_timkiem', 'timkiem');
-add_action('wp_ajax_nopriv_timkiem', 'timkiem');
-function timkiem() {
-    global $wpdb;
-    $data = array();
-    $response = '';
-    if(isset($_POST['tikkiem']) && $_POST['tikkiem']){
-        $args = array(
-            'post_type' => array( 'post','item'  ),
-            's' => trim($_POST['tikkiem']),
-            'posts_per_page' => -1
-        );
-    }else{
-        $args = array(  'post_type' => post, 'posts_per_page' => -1);
-    }
-    $myposts = get_posts( $args );
-    foreach ( $myposts as $post ) : setup_postdata( $post );
-        $response .= '<li><a href="'. get_the_permalink($post->ID).'"><span class="price">'.get_the_title($post->ID).'</span></a></li>';
-    endforeach;
-    echo($response);
-    die();
-}
 
 /************ Theme Options************/
 if( function_exists('acf_add_options_page') ) {
@@ -175,5 +152,43 @@ if( function_exists('acf_add_options_page') ) {
 		'capability'	=> 'edit_posts',
 		'redirect'		=> false
 	));
+}
+// add the ajax fetch js
+add_action( 'wp_footer', 'ajax_fetch' );
+function ajax_fetch() {
+?>
+<script type="text/javascript">
+function fetch(){
+
+    jQuery.ajax({
+        url: '<?php echo admin_url('admin-ajax.php'); ?>',
+        type: 'post',
+        data: { action: 'data_fetch', keyword: jQuery('#keyword').val() },
+        success: function(data) {
+            jQuery('#datafetch').html( data );
+        }
+    });
+
+}
+</script>
+
+<?php
+}
+// the ajax function
+add_action('wp_ajax_data_fetch' , 'data_fetch');
+add_action('wp_ajax_nopriv_data_fetch','data_fetch');
+function data_fetch(){
+
+    $the_query = new WP_Query( array( 'posts_per_page' => -1, 's' => esc_attr( $_POST['keyword'] ), 'post_type' => 'post' ) );
+    if( $the_query->have_posts() ) :
+        while( $the_query->have_posts() ): $the_query->the_post(); ?>
+
+            <li><a href="<?php echo esc_url( post_permalink() ); ?>"><?php the_title();?></a></li>
+
+        <?php endwhile;
+        wp_reset_postdata();
+    endif;
+
+    die();
 }
 ?>

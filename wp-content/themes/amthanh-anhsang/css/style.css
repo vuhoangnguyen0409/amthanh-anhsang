@@ -5074,7 +5074,7 @@ li.is-open .menu-main__toggle:before {
     position: relative;
 }
 
-input#s {
+input#keyword {
     border: 0;
     width: 100%;
     color: #131313;
@@ -5086,15 +5086,15 @@ input#s {
     font-weight: 700;
 }
 
-#s::placeholder {
+#keyword::placeholder {
     color: #131313;
 }
 
-#s:-ms-input-placeholder {
+#keyword:-ms-input-placeholder {
     color: #131313;
 }
 
-#s::-ms-input-placeholder {
+#keyword::-ms-input-placeholder {
     color: #131313;
 }
 
