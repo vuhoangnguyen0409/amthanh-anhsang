@@ -4111,6 +4111,7 @@ li.is-open .menu-main__toggle:before {
 .post-footer {
     display: flex;
     clear: both;
+    margin-top: 30px;
 }
 
 /* Share */
