@@ -34,23 +34,46 @@ get_header();
                                                          <p role="status" aria-live="polite" aria-atomic="true"></p>
                                                          <ul></ul>
                                                       </div>
-                                                      <form action="/demo/vex/demo1/contact/#wpcf7-f264-p72-o1" method="post" class="wpcf7-form init" novalidate="novalidate" data-status="init">
-                                                         <div style="display: none;">
-                                                            <input type="hidden" name="_wpcf7" value="264" />
-                                                            <input type="hidden" name="_wpcf7_version" value="5.3" />
-                                                            <input type="hidden" name="_wpcf7_locale" value="en_US" />
-                                                            <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f264-p72-o1" />
-                                                            <input type="hidden" name="_wpcf7_container_post" value="72" />
-                                                            <input type="hidden" name="_wpcf7_posted_data_hash" value="" />
-                                                         </div>
-                                                         <div class="mailbox">
-                                                            <div class="mailbox__message"><span class="wpcf7-form-control-wrap your-message"><textarea name="your-message" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Message*"></textarea></span></div>
-                                                            <div class="mailbox__name"><span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Full Name" /></span></div>
-                                                            <div class="mailbox__email"><span class="wpcf7-form-control-wrap your-email"><input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="Email Address*" /></span></div>
-                                                            <div class="mailbox__submit magneto"><input type="submit" value="Submit" class="wpcf7-form-control wpcf7-submit" /></div>
-                                                         </div>
-                                                         <div class="wpcf7-response-output" aria-hidden="true"></div>
-                                                      </form>
+
+
+
+                                                      <form action="/lien-he/#wpcf7-f204-p141-o1" method="post" class="wpcf7-form init" novalidate="novalidate" data-status="init">
+                                                      <div style="display: none;">
+                                                      <input type="hidden" name="_wpcf7" value="163">
+                                                      <input type="hidden" name="_wpcf7_version" value="5.4">
+                                                      <input type="hidden" name="_wpcf7_locale" value="en_US">
+                                                      <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f163-p141-o1">
+                                                      <input type="hidden" name="_wpcf7_container_post" value="141">
+                                                      <input type="hidden" name="_wpcf7_posted_data_hash" value="">
+                                                      </div>
+<div class="mailbox">
+        <div class="mailbox__message">
+          <textarea name="your-message" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea" aria-invalid="false" placeholder="Message*"></textarea>
+        </div>
+
+<div class="mailbox__name">
+                                                      <input type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Your Name">
+</div>
+<div class="mailbox__email">
+                                                      <input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="Your Mail">
+</div>
+
+<div class="mailbox__name">
+                                                      <input type="tel" name="your-tel" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-tel wpcf7-validates-as-required wpcf7-validates-as-tel" aria-required="true" aria-invalid="false" placeholder="Your Tel">
+</div>
+
+<div class="mailbox__email">
+  <input type="text" name="your-address" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Your Address">
+</div>
+
+<div class="mailbox__submit magneto magneto--ready" style="transform: translate(0px, 0px);">
+                                                      <input type="submit" value="Submit" class="wpcf7-form-control wpcf7-submit magneto--ready" style="transform: translate(0px, 0px);">
+</div>
+                                                    </div><span class="ajax-loader"></span></p>
+                                                      <div class="wpcf7-response-output" aria-hidden="true"></div></form>
+</div>
+
+
                                                    </div>
                                                 </div>
                                              </div>
