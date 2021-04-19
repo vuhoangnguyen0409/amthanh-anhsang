@@ -1,6 +1,8 @@
 <?php
 //css
 function add_style_css() {
+  wp_register_style( 'font-face', 'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap' );//cdn
+  wp_enqueue_style( 'font-face' );
   wp_register_style( 'wc-block-vendors-style-css', get_template_directory_uri() . '/css/vendors-style.css' );//inside page
   wp_enqueue_style( 'wc-block-vendors-style-css' );
   wp_register_style( 'basicLightbox-css', get_template_directory_uri() . '/css/basicLightbox.min.css' );//inside page
@@ -37,6 +39,8 @@ wp_enqueue_script( 'basicLightbox');
   wp_enqueue_script( 'threefx');
   wp_register_script( 'axloader', get_template_directory_uri() . '/js/axloader.js', array( 'jquery' ), '', true );
   wp_enqueue_script( 'axloader');
+  wp_register_script( 'frontend-toolkit', get_template_directory_uri() . '/js/frontend-toolkit.js', array( 'jquery' ), '', true );
+  wp_enqueue_script( 'frontend-toolkit');
   wp_register_script( 'scripts-js-extra', get_template_directory_uri() . '/js/scripts-js-extra.js', array( 'jquery' ), '', true );
   wp_enqueue_script( 'scripts-js-extra');
   wp_register_script( 'theme-scripts-js', get_template_directory_uri() . '/js/theme.js', array( 'jquery' ), '', true );
@@ -190,5 +194,20 @@ function data_fetch(){
     endif;
 
     die();
+}
+//
+class Child_Wrap extends Walker_Nav_Menu
+{
+    function start_lvl(&$output, $depth = 0, $args = array())
+    {
+        $indent = str_repeat("\t", $depth);
+        $output .= "\n$indent<ul class=\"sub-menu\">\n";
+    }
+
+    function end_lvl(&$output, $depth = 0, $args = array())
+    {
+        $indent = str_repeat("\t", $depth);
+        $output .= "$indent</ul>\n";
+    }
 }
 ?>

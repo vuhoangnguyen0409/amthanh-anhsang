@@ -21,7 +21,7 @@
 <body  <?php body_class(); ?>>
     <div class="loader theme-loader">
        <div class="loader__content">
-          <div class="loader__image"><img src="<?php bloginfo('template_directory');?>/img/logo.svg" alt="Preloader Image"></div>
+          <div class="loader__image"><img src="<?php bloginfo('template_directory');?>/img/logo.png" alt="Preloader Image"></div>
           <div class="loader__spiner"></div>
        </div>
        <div class="loader__progress"></div>
@@ -47,6 +47,7 @@
                 <div class="menu-main-menu-container">
                     <?php wp_nav_menu( array(
                          'theme_location' => 'main-nav', // tên location cần hiển thị
+                         'walker'  => new Child_Wrap(),
                          'container' => 'ul', // thẻ nav chua menu
                          'menu_class' => 'primary', //main-nav: class của the nav
                          'menu_id' => 'menu-main-menu'
@@ -61,24 +62,13 @@
                    <div class="menu-layer__inner container container--full">
                       <nav class="menu-main">
                          <div class="menu-main-menu-container">
-                            <ul id="menu-main-menu-1" class="primary">
-                               <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-261 current_page_item menu-item-509"><a href="/" aria-current="page">Âm Thanh Ánh Sáng</a>
-                                   <ul class="sub-menu">
-                                        <li id="menu-item-390" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-390"><a href="#">BÀN MIXER</a></li>
-                                        <li id="menu-item-391" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-391"><a href="#">MICROPHONE</a></li>
-                                        <li id="menu-item-392" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-392"><a href="#">AMPLIFIER</a></li>
-                                        <li id="menu-item-393" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-393"><a href="#">LOA (SPEAKER)</a></li>
-                                        <li id="menu-item-394" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-394"><a href="#">ĐÈN SÂN KHẤU</a></li>
-                                        <li id="menu-item-395" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-395"><a href="#">HIỆU ỨNG SÂN KHẤU</a></li>
-                                        <li id="menu-item-396" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-396"><a href="#">PHỤ KIỆN - TỦ RACK</a></li>
-                                     </ul>
-                              </li>
-                               <li id="menu-item-505" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-505"><a href="http://sukienphuquoc.com" target="_blank">Tổ Chức Sự Kiện</a></li>
-                              <li id="menu-item-505" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-505"><a href="http://manhinhledphuquoc.com" target="_blank">Màn Hình Led</a></li>
-                              <li id="menu-item-507" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-507"><a href="/">Tin Tức</a></li>
-                              <li id="menu-item-504" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-504"><a href="/">Giới Thiệu</a></li>
-                              <li id="menu-item-506" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-506"><a href="/">Liên Hệ</a></li>
-                            </ul>
+                            <?php wp_nav_menu( array(
+                                 'theme_location' => 'main-nav', // tên location cần hiển thị
+                                 'walker'  => new Child_Wrap(),
+                                 'container' => 'ul', // thẻ nav chua menu
+                                 'menu_class' => 'primary', //main-nav: class của the nav
+                                 'menu_id' => 'menu-main-menu'
+                            ) ); ?>
                          </div>
                       </nav>
                    </div>
