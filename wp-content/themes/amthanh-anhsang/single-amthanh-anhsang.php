@@ -3,7 +3,8 @@ get_header(); ?>
 
   <div class="rt-player-audio" data-audio="https://rascalsthemes.com/demo/vex/audio/Turbo.mp3"></div>
 
-  <?php  if (have_posts()): while(have_posts()): the_post();
+  <?php
+  if (have_posts()): while(have_posts()): the_post();
   $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);?>
 
     <div class="content--fullscreen content--builder content--album">
@@ -70,7 +71,6 @@ if( have_rows('detail') ):
                          <h5 class="player-meta__title"><span class="player-meta__nr">1</span><?php echo $detail_name;?></h5>
                          <span class="player-meta__desc"><?php echo $detail_content;?></span>
                       </div>
-                      <div class="audio-player__buttons"><a class="wave-link" href="http://link_here" target="_self">Download</a></div>
                    </div>
                    <div class="audio-player__ctrl audio-ctrl audio-player__row"><span class="audio-ctrl__elapsed"></span><span class="audio-ctrl__total"></span><span class="audio-ctrl__progress"><span class="audio-ctrl__position"></span></span></div>
                 </div>
@@ -86,10 +86,15 @@ endif;?>
                   <?php the_content() ;?>
                   <div class="post-footer">
                     <div class="share">
+                        <?php
+                // vars
+                $links = get_field('social_links', 'option');
+                if( $links ): ?>
                       <span class="icon icon-share"></span>
-                      <a class="share-button fb-share-btn" target="_blank" href="http://www.facebook.com/sharer.php?u=https://rascalsthemes.com/demo/vex/demo1/album/city-life/"><span class="icon icon-facebook"></span></a>
-                      <a class="share-button twitter-share-btn" target="_blank" href="http://twitter.com/share?url=https://rascalsthemes.com/demo/vex/demo1/album/city-life/"><span class="icon icon-twitter"></span></a>
-                      <a class="share-button linkedin-share-btn" target="_blank" href="https://www.linkedin.com/cws/share?url=https://rascalsthemes.com/demo/vex/demo1/album/city-life/"><span class="icon icon-linkedin"></span></a>
+                      <a class="share-button fb-share-btn" target="_blank" href=<?php echo $links['facebook']['url']; ?>"><span class="icon icon-facebook"></span></a>
+                      <a class="share-button twitter-share-btn" target="_blank" href="<?php echo $links['twitter']['url']; ?>"><span class="icon icon-twitter"></span></a>
+                      <a class="share-button linkedin-share-btn" target="_blank" href="<?php echo $links['instagram']['url']; ?>"><span class="icon icon-instagram"></span></a>
+                <?php endif; ?>
                     </div>
                   </div>
 

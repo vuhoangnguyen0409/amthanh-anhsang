@@ -27,14 +27,14 @@
 			   </ul>
 			   <span class="socials__icon magneto"><span class="icon icon-share"></span></span>
 			   <div class="fx-txt-a socials__text">
-				  <span class="fx-txt-a__text">Follow</span>
+				  <span class="fx-txt-a__text">Theo dõi</span>
 			   </div>
 			</div>
 		 </div>
 	  </div>
 	  <div class="footer__center">
 		 <div class="footer__note">
-			&copy; Copyright 2020 - <a class="wave-link" href="#" target="_blank">Trà Hồng Quân's Events</a>.
+			&copy; 2020 - Bản quyền thuộc <a class="wave-link" href="#" target="_blank">Trà Hồng Quân's Events</a>.
 		 </div>
 		 <!-- .footer-note -->
 	  </div>
@@ -67,7 +67,6 @@
 <
 script src = "assets/js/jquery.min.js" > < /script>
 
-
 	-->
   <div id="sidebar">
      <div class="sidebar__block sidebar--left">
@@ -76,11 +75,11 @@ script src = "assets/js/jquery.min.js" > < /script>
        <div class="sidebar__content">
         <aside>
            <aside id="recent-posts-3" class="widget widget_recent_entries">
-             <input type="text" placeholder="Search and hit enter" name="keyword" id="keyword" onkeyup="fetch()" placeholder="Nhập tìm kiếm post post ajax"></input>
-             <ul id="datafetch">Result</ul>
+             <input type="text" placeholder="Từ khoá tìm kiếm" name="keyword" id="keyword" onkeyup="fetch()" placeholder="Nhập tìm kiếm post post ajax"></input>
+             <ul id="datafetch">Kết quả</ul>
            </aside>
            <aside id="recent-posts-3" class="widget widget_recent_entries">
-            <h3 class="widget-title">Recent Posts</h3>
+            <h3 class="widget-title">Bài viết gần đây</h3>
             <ul>
                 <?php $args = array(
                         'posts_per_page'   => 5,
@@ -101,19 +100,9 @@ script src = "assets/js/jquery.min.js" > < /script>
              <?php endforeach; ?>
             </ul>
            </aside>
-           <aside id="recent-comments-3" class="widget widget_recent_comments">
-            <h3 class="widget-title">Recent Comments</h3>
-            <ul id="recentcomments">
-             <li class="recentcomments"><span class="comment-author-link">Peter</span> on <a href="https://rascalsthemes.com/demo/vex/demo1/event/fabric-ricardo-el-sonido-2/#comment-30">Fabric Ricardo El Sonido</a></li>
-             <li class="recentcomments"><span class="comment-author-link">Lara</span> on <a href="https://rascalsthemes.com/demo/vex/demo1/event/fabric-ricardo-el-sonido-2/#comment-29">Fabric Ricardo El Sonido</a></li>
-             <li class="recentcomments"><span class="comment-author-link">Peter</span> on <a href="https://rascalsthemes.com/demo/vex/demo1/event/modern-city/#comment-28">Modern City</a></li>
-             <li class="recentcomments"><span class="comment-author-link">Lara</span> on <a href="https://rascalsthemes.com/demo/vex/demo1/event/modern-city/#comment-27">Modern City</a></li>
-             <li class="recentcomments"><span class="comment-author-link">Peter</span> on <a href="https://rascalsthemes.com/demo/vex/demo1/event/fabric-ricardo-el-sonido/#comment-26">Astronaut Dub Bass Live Stage</a></li>
-            </ul>
-           </aside>
 
            <aside id="tag_cloud-1" class="widget widget_tag_cloud">
-            <h3 class="widget-title">Tags</h3>
+            <h3 class="widget-title">Từ khoá liên quan</h3>
             <div class="tagcloud">
              <a href="/" class="tag-cloud-link" style="font-size: 13px;">Sự Kiện Phú Quốc</a>
              <a href="/" class="tag-cloud-link" style="font-size: 13px;">Âm Thanh - Ánh Sáng</a>
