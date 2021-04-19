@@ -1,33 +1,52 @@
-<?php
-/**
- * Template Name: Category
- **/
-get_header();
-
-//wp_list_categories();
-//for each category, show all posts
-$cat_args=array(
-  'orderby' => 'name',
-  'order' => 'ASC'
-   );
-$categories=get_categories($cat_args);
-  foreach($categories as $category) {
-    $args=array(
-      'showposts' => -1,
-      'category__in' => array($category->term_id),
-      'caller_get_posts'=>1
-    );
-    $posts=get_posts($args);
-      if ($posts) {
-        echo '<h2>Category: <a href="' . get_category_link( $category->term_id ) . '" title="' . sprintf( __( "View all posts in %s" ), $category->name ) . '" ' . '>' . $category->name.'</a> </h2> ';
-        foreach($posts as $post) {
-          setup_postdata($post); ?>
-          <p><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></p>
-          <?php
-        } // foreach($posts
-      } // if ($posts
-    } // foreach($categories
+<?php get_header();
 ?>
+	  <div class="content--horizontal albums">
+		 <div class="fx-perspective fs">
+			<div class="fs__image fx-perspective__image" style="background-image: url(<?php bloginfo('template_directory');?>/img/bg/parallax-bg.jpg)"></div>
+			<div class="fade-layer" style="opacity:0.7"></div>
+			<div id="fs-scroll" class="fs-scroll--h">
+			   <div id="fs-scroll__content">
+				  <div class="albums-grid grid-albums-horizontal">
 
+                      <?php
+                      if (have_posts()): while(have_posts()): the_post();
+                      $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);?>
 
+								<div class="scroll-item is-waypoint fx-scale-from-right delay-05">
+		 						<div class="mod mod-album-2 album-item">
+		 						   <div class="mod__inner post-254 vex_albums type-vex_albums status-publish has-post-thumbnail hentry">
+		 							  <div class="mod__img">
+		 								 <div class="ithumb ithumb-perspective">
+		 									<a href="<?php the_permalink(); ?>" class="fx-cursor fx-load fx-load-fi" data-cursor-class="click">
+		 									  <div class="ithumb-perspective__img">
+		 										  <div class="img waypoint-delay">
+		 											 <img src="<?php the_post_thumbnail_url(); ?>" alt="<?php echo $alt; ?>" class="fx-load-img">
+		 										  </div>
+		 									   </div>
+		 									   <div class="mod-title ithumb-perspective__title h2-line">
+		 										  <h2 class="mod-title__h fx-txt-b"><span class="fx-txt-b__text delay-06"><?php the_title() ?></span></h2>
+		 									   </div>
+		 									</a>
+		 								 </div>
+		 							  </div>
+		 						   </div>
+		 						</div>
+		 					 </div>
+                             <?php
+                             // End loop.
+                             endwhile;
+
+                         // No value.
+                         else :
+                             // Do something...
+                         endif;?>
+				  </div>
+			   </div>
+			   <!-- #fs-scroll__content -->
+			</div>
+			<!-- #fs-scroll -->
+		 </div>
+		 <!-- .fx -->
+	  </div>
+	  <!-- .content -->
 <?php get_footer(); ?>
