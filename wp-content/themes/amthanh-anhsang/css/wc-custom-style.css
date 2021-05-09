@@ -2339,3 +2339,12 @@ body .pswp {
     background-color: transparent !important;
     opacity: 1;
 }
+
+
+.about-doi-tac .blocks-gallery-grid .blocks-gallery-item {
+    margin: 0;
+    background: #fff;
+    padding: 15px;
+    border-radius: 20px;
+    border: 9px solid #000;
+}

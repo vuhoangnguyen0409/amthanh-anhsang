@@ -4,6 +4,9 @@ var theme = (function() {
 
     /* Run scripts
      -------------------------------- */
+	 
+
+     
 
     // If document is ready VJS
     document.addEventListener("DOMContentLoaded", function() {
@@ -37,6 +40,8 @@ var theme = (function() {
             this.events.init();
 
             // Small Helpers
+			this.helpers.ypopup();
+			this.helpers.scrollMove();
             this.helpers.scrollTop();
             this.helpers.sidebar();
 
@@ -58,8 +63,11 @@ var theme = (function() {
             this.magnet.update('.magneto,input[type="submit"], .custom-menu ul li a');
 
             this.smoothScroll.update();
-
+			
+			this.helpers.ypopup();
+			this.helpers.scrollMove();
             this.helpers.sidebar();
+			
 
 
             this.plugins.lazy();
@@ -1529,6 +1537,48 @@ var theme = (function() {
 
                 }
             },
+			
+			scrollMove : function() {
+				$('#fs-scroll__content').find('.scroll-item').first().addClass('active');
+				
+				var count_prev = 1;
+				$('.prev').click(function (event) {
+					if ($("#fs-scroll__content .scroll-item:first-child").hasClass("active")){
+						console.log("first is active");
+						return false;
+					}
+					else {
+						$("#fs-scroll__content .active").removeClass('active').prev().addClass('active');
+						//
+						$('.scroll-prev').css({
+						'-webkit-transform': 'translateX(' + (400 * count_prev) + 'px) '
+					});
+					count_prev += 1;
+					}
+				});
+				
+				var count_next = 1;
+				$('.next').click(function (event) {
+					if ($("#fs-scroll__content .scroll-item:last-child").hasClass("active")){
+						console.log("last is active");
+						return false;
+					}
+					else {
+						$("#fs-scroll__content .active").removeClass('active').next().addClass('active');
+						//
+						$('.scroll-next').css({
+							'-webkit-transform': 'translateX(' + (-400 * count_next) + 'px) '
+						});
+						count_next += 1;
+					}
+				});
+			},
+			
+			ypopup : function() {
+				
+				jQuery("a.ytpopup").YouTubePopUp();
+			},
+			
 
             scrollTop : function() {
 

@@ -24,7 +24,7 @@ var themeToolkit = (function($) {
 
     if ( $( 'body' ).hasClass('AXloader') ) {
 		toolkitVars.isAjax = true;
-	}	
+	}
 
     /* Ajax: Enabled */
     doc.addEventListener('AXEnd', function(customEvent) {
@@ -32,13 +32,13 @@ var themeToolkit = (function($) {
     		themeToolkit.reload($);
     	}
     	toolkitVars.ajaxReload = true;
-        
+
     });
     doc.addEventListener('AXStart', function(customEvent) {
     	if ( toolkitVars.ajaxReload ) {
     		themeToolkit.loadStart($);
     	}
-        
+
     });
 
     doc.addEventListener("DOMContentLoaded", function() {
@@ -52,7 +52,7 @@ var themeToolkit = (function($) {
 
         /* Init
          -------------------------------- */
-        init : function(){	
+        init : function(){
     		this.woo.cart.init();
         	this.woo.cart.addToCartButton();
         	this.woo.products.filters();
@@ -74,7 +74,7 @@ var themeToolkit = (function($) {
             this.player.update();
             this.disqus();
         },
-        
+
      	loadStart: function() {
         },
 
@@ -86,9 +86,9 @@ var themeToolkit = (function($) {
         	quantity : function() {
 
         		$('body').on( 'click', '.wc-quantity .plus, .wc-quantity .minus', function() {
-  
+
 	            // Get current quantity values
-	            let 
+	            let
 	            	qtyWrap = $( this ).closest( '.wc-quantity' ),
 	            	qty = qtyWrap.find( '.qty' ),
 	           		val = parseFloat(qty.val()),
@@ -96,10 +96,10 @@ var themeToolkit = (function($) {
 	           		min = parseFloat(qty.attr( 'min' )),
 	           		minStep = 1,
 	           		step = parseFloat(qty.attr( 'step' ));
-	  			
+
 	  			if ( qtyWrap.hasClass('is-cart-page') ) {
 	  				minStep = 0;
-	  				
+
 	  			}
 	            // Change the value if plus or minus
 	            if ( $( this ).is( '.plus' ) ) {
@@ -117,7 +117,7 @@ var themeToolkit = (function($) {
 	            }
 	            // Trigger change event
             	qty.trigger( 'change' );
-              
+
          });
         	},
 
@@ -131,30 +131,30 @@ var themeToolkit = (function($) {
 
         			//  Ajax
         			let isAjax = true;
-        			
+
         			// Pretty permalinks
         			let prettyPermalinks = true;
         			if ( $('.wc-filters').data('data-permalinks-structure') === 'base' ) {
         				prettyPermalinks = false;
-        			}	
+        			}
 
         			// Categories
         			$( '.wc-filters' ).on( 'change', '.js-wc-filter select', function(event) {
         				let thisPermalink = $(this).parent().data('permalinks');
         				let val = $(this).val();
     					let thisUrl = '';
-    					let goToUrl = ''; 
+    					let goToUrl = '';
     					let shopUrl = $(this).find("option:first-child").val();
 
     					if ( ! prettyPermalinks ) {
     						thisUrl = window.location.hostname;
-    						goToUrl = toolkitOptions.siteUrl + '/' + val + ''; 
+    						goToUrl = toolkitOptions.siteUrl + '/' + val + '';
     					} else {
     						thisUrl = window.location.hostname;
-    						goToUrl = toolkitOptions.siteUrl + '/' + thisPermalink + '/'  + val; 
+    						goToUrl = toolkitOptions.siteUrl + '/' + thisPermalink + '/'  + val;
     					}
 
-    					// Go to the shop page if is selected default value 
+    					// Go to the shop page if is selected default value
     					if ( val === shopUrl ) {
     						goToUrl = shopUrl;
     					}
@@ -165,7 +165,7 @@ var themeToolkit = (function($) {
     					}
 
         			});
-                   
+
         			// Only if Ajax is enabled
     				if ( toolkitVars.isAjax ) {
 
@@ -175,16 +175,16 @@ var themeToolkit = (function($) {
 
         					let val = $(this).val();
         					let thisUrl = ''
-        					let goToUrl = ''; 
+        					let goToUrl = '';
 
         					if ( ! prettyPermalinks ) {
         						thisUrl = window.location.href.split('?')[0];
-        						goToUrl = thisUrl + '?orderby='+val+'&paged=1&post_type=product'; 
+        						goToUrl = thisUrl + '?orderby='+val+'&paged=1&post_type=product';
         					} else {
         						thisUrl = window.location.href.split('?')[0];
-        						goToUrl = thisUrl + '?orderby=' + val; 
+        						goToUrl = thisUrl + '?orderby=' + val;
         					}
-        					
+
         					AXloader.loadUrl( goToUrl )
 						});
     				}
@@ -196,7 +196,7 @@ var themeToolkit = (function($) {
         	cart : {
 
         		init :  function() {
-        			
+
         			// Events
         			$( 'body' ).on( 'updated_cart_totals', themeToolkit.woo.cart.update );
 					$( 'body' ).on( 'removed_from_cart', e=>{
@@ -204,12 +204,12 @@ var themeToolkit = (function($) {
 							$( '.woocommerce-cart-form .qty' ).first().trigger( 'change' );
 						};
 						$( "[name='update_cart']" ).trigger( "click" );
-						themeToolkit.woo.cart.update(); 
+						themeToolkit.woo.cart.update();
 
 					});
 
 					$( 'body' ).on( 'added_to_cart', (event, fragments, cart_hash, $button)=>{
-						themeToolkit.woo.cart.update(); 
+						themeToolkit.woo.cart.update();
 					});
 
         			$( 'body' ).on('click', '.js-cart-button', function(e){
@@ -223,7 +223,7 @@ var themeToolkit = (function($) {
         		},
 
         		update : function() {
-        			
+
     			 	$.ajax({
 	                    url: ajax_action.ajaxurl,
 	                    type: 'post',
@@ -244,7 +244,7 @@ var themeToolkit = (function($) {
 								    $(this).removeClass('cart-updated').dequeue();
 								});
 	                        }
-	                      
+
 	                    },
 	                    error: function(request, status, error) {
 	                    	console.log(error);
@@ -309,7 +309,7 @@ var themeToolkit = (function($) {
 
         	},
 
-        	
+
         	tabs : function() {
         		let tabs = document.querySelectorAll('.woocommerce-tabs li a');
         		for ( let t of tabs ) {
@@ -341,7 +341,7 @@ var themeToolkit = (function($) {
 
         },
 
-        
+
         /* ==================================================
             BasicLightbox
         ================================================== */
@@ -361,16 +361,16 @@ var themeToolkit = (function($) {
                             if ( content ) {
                                 let bl = basicLightbox.create(
                                     content.innerHTML, {
-                                        className: 'fx-cursor fx-cursor-close', 
+                                        className: 'fx-cursor fx-cursor-close',
                                     }
                                 );
                                 bl.show(() => {
                                     document.querySelector('.basicLightbox .lightbox__inner').addEventListener('click', ()=> bl.close() );
-                                    theme.cursor.update('.basicLightbox'); 
+                                    theme.cursor.update('.basicLightbox');
                                     if ( document.querySelector('#cursor') ) {
                                         document.querySelector('#cursor').classList.add('close');
                                     }
-                                    
+
                                 });
                             }
                         });
@@ -388,7 +388,7 @@ var themeToolkit = (function($) {
 
             init : function() {
                 let event = themeToolkit.events;
-                
+
             },
             list: function() {
                 if ( document.querySelector('.events-list .event-list-item') ) {
@@ -405,7 +405,7 @@ var themeToolkit = (function($) {
                             ev.classList.remove('is-active');
 
                         });
-                    }  
+                    }
                 }
 
             },
@@ -414,7 +414,7 @@ var themeToolkit = (function($) {
 
 
         /* ==================================================
-          Player 
+          Player
         ================================================== */
         player : {
 
@@ -435,10 +435,10 @@ var themeToolkit = (function($) {
 
                 let that = themeToolkit.player;
                 let bgPlayer = doc.querySelector( '.bg-player.rascals-player' );
-               
+
                 if ( bgPlayer ) {
                     let bgPageAudio = doc.querySelector('.rt-player-audio');
-                    that.bgPlayer = bgPlayer; 
+                    that.bgPlayer = bgPlayer;
                     that.bgSrcInit = bgPlayer.getAttribute('href');
                     if (bgPageAudio) {
                         let src = bgPageAudio.getAttribute('data-audio');
@@ -449,7 +449,7 @@ var themeToolkit = (function($) {
                 // Set players
                 that.setPlayers();
             },
-            
+
             setPlayers : function() {
                 let that = themeToolkit.player;
                 let players = doc.querySelectorAll( '.rascals-player' );
@@ -466,7 +466,7 @@ var themeToolkit = (function($) {
                     }, true);
                 }
             },
-            
+
             progress : function() {
                 let that = themeToolkit.player;
                 let target = that.sound.target;
@@ -487,7 +487,7 @@ var themeToolkit = (function($) {
                     let percent = 100 * currTime / length;
                     percent = percent.toFixed(2);
                     positionBar.style.width = percent + '%';
-                    
+
                     // Next track
                     if ( currTime >= length ) {
                         that.playNext();
@@ -503,7 +503,7 @@ var themeToolkit = (function($) {
                         that.firstLoad === false;
                     }
                 }
-               
+
             },
 
             seek : function(event) {
@@ -533,7 +533,7 @@ var themeToolkit = (function($) {
                 }
                 if ( that.mousedown === false && that.moveBar === true ) {
                     that.moveBar = false;
-                    that.sound.play(); 
+                    that.sound.play();
                 }
             },
 
@@ -547,7 +547,7 @@ var themeToolkit = (function($) {
                     that.progressBar.removeEventListener('mouseup', () => mousedown = false);
                     that.progressBar.removeEventListener('mousemove', that.scrub);
                 }
-                
+
                 // Bind progressbar listener
                 that.progressBar = that.sound.listItem.querySelector('.audio-ctrl__progress');
                 that.progressBar.addEventListener("click", that.seek);
@@ -564,7 +564,7 @@ var themeToolkit = (function($) {
                 let currentUrl;
                 let init_list = false;
                 that.firstLoad = false;
-                
+
                 if ( track_url === false || track_url === '#' || track_url === '' ) {
                     return;
                 }
@@ -585,14 +585,14 @@ var themeToolkit = (function($) {
                     that.sound.addEventListener('error', that.error );
                     that.sound.target = target;
                     that.firstLoad = true;
-                } 
+                }
 
                 if ( that.sound.src !== track_url || that.sound.target.isEqualNode(target) === false ) {
                      that.sound.src = track_url;
                      that.firstLoad = true;
                 }
 
-                
+
                 if ( that.firstLoad === true ) {
 
                     // Remove react connection
@@ -615,7 +615,7 @@ var themeToolkit = (function($) {
                         that.sound.index = that.listIndex(that.sound.listItem);
                         that.sound.loop = false;
                         that.addNewListeners();
-                    } 
+                    }
 
                     // Single
                     if ( target.getAttribute('data-list') === null ) {
@@ -626,9 +626,9 @@ var themeToolkit = (function($) {
 
                     // BG Player
                     if ( target.classList.contains('bg-player') ) {
-                        that.isBgPlayer = true; 
+                        that.isBgPlayer = true;
                     } else {
-                        that.isBgPlayer = false; 
+                        that.isBgPlayer = false;
                     }
 
                 }
@@ -637,9 +637,9 @@ var themeToolkit = (function($) {
                 that.sound.target = target;
                 that.togglePlay(that.sound);
 
-               
+
             },
-            
+
             clearStatus :  function() {
 
                 // Grab ready players
@@ -656,14 +656,14 @@ var themeToolkit = (function($) {
                  for ( let p of loading ) {
                     p.classList.remove('is-player-loading');
                 }
-                
+
             },
 
             addClasses : function(cls) {
                 let that = themeToolkit.player;
 
                 that.sound.target.classList.add(cls);
-                
+
                 if ( that.sound.listItem ) {
                     that.sound.listItem.classList.add(cls);
                 }
@@ -672,7 +672,7 @@ var themeToolkit = (function($) {
                     that.sound.reactWIth.classList.add(cls);
                 }
             },
-            
+
             togglePlay: function(media) {
                 let that = themeToolkit.player;
                 let target = media.target;
@@ -681,7 +681,7 @@ var themeToolkit = (function($) {
                 if ( that.firstLoad === true ) {
                     that.addClasses('is-player-loading');
                     setTimeout(()=> { media.play(); }, 150);
-                    
+
                 } else {
                      if ( media.paused ) {
                         that.addClasses('is-player-playing');
@@ -691,7 +691,7 @@ var themeToolkit = (function($) {
                         media.pause();
                     }
                 }
-               
+
             },
 
             playNext : function() {
@@ -775,7 +775,7 @@ var themeToolkit = (function($) {
                         that.sound.volume = 0;
                         that.firstLoad = true;
                         that.togglePlay(that.sound, that.bgPlayer);
-                        
+
                         // Up volume on new track
                          that.setVolUp();
 
@@ -800,8 +800,8 @@ var themeToolkit = (function($) {
                 let bgPageAudio = doc.querySelector('.rt-player-audio');
                 let srcInit = that.bgSrcInit;
                 let src = that.bgPlayer.getAttribute('href');
-                
-             
+
+
                 // Set src
                 if (bgPageAudio) {
                     src = bgPageAudio.getAttribute('data-audio');
@@ -813,15 +813,15 @@ var themeToolkit = (function($) {
                 if ( that.sound ) {
                     that.sound.target = that.bgPlayer;
                     if ( that.sound.paused === false && that.sound.currentSrc !== src ) {
-                        
+
                         that.smooth(src);
-                      
+
                     } else if ( that.sound.paused && that.sound.currentSrc !== src ) {
                          that.sound.src = src;
                          that.sound.volume = that.volume;
                     }
 
- 
+
                 }
 
             },
@@ -905,8 +905,8 @@ var themeToolkit = (function($) {
                 let that = themeToolkit.player;
 
                 if ( that.sound && that.sound.target ) {
-                    
-                    // BG Player is paused and tracklist is played                    
+
+                    // BG Player is paused and tracklist is played
                     if ( that.sound.target.classList.contains('bg-player') === false && that.BgPlayerPlaying === false ) {
                         // Down volume
                         that.setVolDown(function(){
@@ -915,27 +915,27 @@ var themeToolkit = (function($) {
                             that.clearStatus();
 
                         });
-                       
+
                     } else {
                         // BG Player is played
                         that.setBgPlayer();
 
                     }
-                        
-                } 
 
-              
-                
+                }
+
+
+
                 // Set Players
                 that.setPlayers();
-               
+
             }
-           
+
         },
 
 
         /* ==================================================
-          Disqus 
+          Disqus
         ================================================== */
         disqus : function() {
             let disqus = document.querySelector('#disqus_thread');
@@ -968,7 +968,7 @@ var themeToolkit = (function($) {
 
 
         /* ==================================================
-          Helpers 
+          Helpers
         ================================================== */
         getClosest : function (elem, selector) {
 

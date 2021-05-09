@@ -138,7 +138,7 @@ function wp_default_packages_vendor( $scripts ) {
 		)
 	);
 
-	did_action( 'init' ) && $scripts->add_inline_script( 'lodash', 'window.lodash = _.noConflict();' );
+	//did_action( 'init' ) && $scripts->add_inline_script( 'lodash', 'window.lodash = _.noConflict();' );
 
 	did_action( 'init' ) && $scripts->add_inline_script(
 		'moment',
