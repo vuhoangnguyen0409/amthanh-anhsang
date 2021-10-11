@@ -4,9 +4,9 @@ var theme = (function() {
 
     /* Run scripts
      -------------------------------- */
-	 
 
-     
+
+
 
     // If document is ready VJS
     document.addEventListener("DOMContentLoaded", function() {
@@ -63,11 +63,11 @@ var theme = (function() {
             this.magnet.update('.magneto,input[type="submit"], .custom-menu ul li a');
 
             this.smoothScroll.update();
-			
+
 			this.helpers.ypopup();
 			this.helpers.scrollMove();
             this.helpers.sidebar();
-			
+
 
 
             this.plugins.lazy();
@@ -1243,11 +1243,11 @@ var theme = (function() {
 
                                 if ( waypoints[i].el.classList.contains('.waypoint-delay') ) {
                                     target = waypoints[i].el;
-                                    target.style.transitionDelay = delay+"s";
+                                    //target.style.transitionDelay = delay+"s";
                                 }
                                 else if ( waypoints[i].el.querySelector('.waypoint-delay') ) {
                                     target = waypoints[i].el.querySelector('.waypoint-delay');
-                                    target.style.transitionDelay = delay+"s";
+                                    //target.style.transitionDelay = delay+"s";
                                 }
 
 
@@ -1537,10 +1537,10 @@ var theme = (function() {
 
                 }
             },
-			
+
 			scrollMove : function() {
 				$('#fs-scroll__content').find('.scroll-item').first().addClass('active');
-				
+
 				var count_prev = 1;
 				$('.prev').click(function (event) {
 					if ($("#fs-scroll__content .scroll-item:first-child").hasClass("active")){
@@ -1556,7 +1556,7 @@ var theme = (function() {
 					count_prev += 1;
 					}
 				});
-				
+
 				var count_next = 1;
 				$('.next').click(function (event) {
 					if ($("#fs-scroll__content .scroll-item:last-child").hasClass("active")){
@@ -1573,12 +1573,12 @@ var theme = (function() {
 					}
 				});
 			},
-			
+
 			ypopup : function() {
-				
+
 				jQuery("a.ytpopup").YouTubePopUp();
 			},
-			
+
 
             scrollTop : function() {
 

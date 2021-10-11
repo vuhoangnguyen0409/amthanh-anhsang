@@ -29,8 +29,9 @@ function add_style_css() {
 add_action( 'wp_enqueue_scripts', 'add_style_css' );
 //js
 function add_style_js() {
-wp_register_script( 'basicLightbox', get_template_directory_uri() . '/js/basicLightbox.min.js', array( 'jquery' ), '', true );
-wp_enqueue_script( 'basicLightbox');
+    //if( ! is_page( array( 'tao-su-kien', 'student-work' ) ) ) {
+    wp_register_script( 'basicLightbox', get_template_directory_uri() . '/js/basicLightbox.min.js', array( 'jquery' ), '', true );
+    wp_enqueue_script( 'basicLightbox');
 
   wp_register_script( 'gsap', get_template_directory_uri() . '/js/gsap.min.js', array( 'jquery' ), '', true );
   wp_enqueue_script( 'gsap');
@@ -43,16 +44,22 @@ wp_enqueue_script( 'basicLightbox');
 
   wp_register_script( 'frontend-toolkit', get_template_directory_uri() . '/js/frontend-toolkit.js', array( 'jquery' ), '', true );
   wp_enqueue_script( 'frontend-toolkit');
-  wp_register_script( 'scripts-js-extra', get_template_directory_uri() . '/js/scripts-js-extra.js', array( 'jquery' ), '', true );
-  wp_enqueue_script( 'scripts-js-extra');
-  wp_register_script( 'theme-scripts-js', get_template_directory_uri() . '/js/theme.js', array( 'jquery' ), '', true );
-  wp_enqueue_script( 'theme-scripts-js');
+
+      wp_register_script( 'scripts-js-extra', get_template_directory_uri() . '/js/scripts-js-extra.js', array( 'jquery' ), '', true );
+      wp_enqueue_script( 'scripts-js-extra');
+
+
+      wp_register_script( 'theme-scripts-js', get_template_directory_uri() . '/js/theme.js', array( 'jquery' ), '', true );
+      wp_enqueue_script( 'theme-scripts-js');
+
   wp_register_script( 'jquery2', get_template_directory_uri() . '/js/jquery-3.2.1.min.js', array( 'jquery' ));
   wp_enqueue_script( 'jquery2');
   wp_register_script( 'youtube-popup', get_template_directory_uri() . '/js/video.popup.js', array( 'jquery' ));
   wp_enqueue_script( 'youtube-popup');
+
   wp_register_script( 'axloader', get_template_directory_uri() . '/js/axloader.js', array( 'jquery' ), '', true );
   wp_enqueue_script( 'axloader');
+  // }
 
 }
 add_action( 'wp_enqueue_scripts', 'add_style_js' );
@@ -115,7 +122,7 @@ add_filter('body_class', function ($classes) {
 
 function get_custom_cat_template($single_template) {
    global $post;
-   if ( in_category( array('am-thanh', 'anh-sang') )) {
+   if ( in_category( array('am-thanh', 'anh-sang', 'san-khau') )) {
       $single_template = dirname( __FILE__ ) . '/single-amthanh-anhsang.php';
    }
    return $single_template;

@@ -119,5 +119,16 @@ script src = "assets/js/jquery.min.js" > < /script>
   </div>
 
 	<?php wp_footer(); ?>
+    <?php
+	global $post;
+	if ( is_page( 512 ) ): //Change this number to id of page ?>
 
+	<script type="text/javascript" src="<?php bloginfo('template_directory');?>/event-css-js/popper.min.js"></script>
+	<script type="text/javascript" src="<?php bloginfo('template_directory');?>/event-css-js/bootstrap.min.js" ></script>
+	<script type="text/javascript" src="<?php bloginfo('template_directory');?>/event-css-js/script.js"></script>
+    <script type="text/javascript" src="<?php bloginfo('template_directory');?>/event-css-js/book.js"></script>
+
+    
+<!--PERSONAL SCRIPT JavaScript-->
+    <?php endif; ?>
 	</html>

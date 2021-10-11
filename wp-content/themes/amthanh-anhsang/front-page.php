@@ -9,16 +9,17 @@
 			<div id="fs-scroll" class="fs-scroll--h">
 			   <div id="fs-scroll__content">
 				  <div class="albums-grid grid-albums-horizontal">
-					  <div class="scroll-prev" style="transform: translateX(0);">
-				    <div class="scroll-next" style="transform: translateX(0);">
+						<div class="scroll-prev" style="transform: translateX(0);">
+						<div class="scroll-next" style="transform: translateX(0);">
 
 						<?php $args = array(
 								'posts_per_page'   => 10,
 								'offset'           => 0,
-								'category'         => '',
-								'category_name'    => 'amthanh-anhsang',
+								//'category'         => '',
+								//'category_name'    => 'am-thanh',
+								'cat'              => '13, 14',
 								'orderby'          => 'post_date',
-								'order'            => 'ASC',
+								'order'            => 'DESC',
 								//'order'            => 'DESC',
 								'include'          => '',
 								'exclude'          => '',
@@ -59,8 +60,8 @@
 				  </div>
 			   </div>
 			   <!-- #fs-scroll__content -->
-		   </div>
-			</div>
+			    </div>
+				</div>
 			</div>
 			<!-- #fs-scroll -->
 		 </div>

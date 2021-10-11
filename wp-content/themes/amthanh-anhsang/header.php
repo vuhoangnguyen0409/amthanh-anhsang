@@ -4,6 +4,15 @@
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="format-detection" content="telephone=no">
+<link rel="icon" type="image/png" href="<?php bloginfo('template_directory');?>/img/logo.png"/>
+<?php
+	global $post;
+	if ( is_page( 512 ) ): //Change this number to id of page ?>
+	<link rel="stylesheet" href="<?php bloginfo('template_directory');?>/event-css-js/icons.css" />
+	<link rel="stylesheet" href="<?php bloginfo('template_directory');?>/event-css-js/bootstrap.css" />
+    <link rel="stylesheet" href="<?php bloginfo('template_directory');?>/event-css-js/style.css" />
+<!--PERSONAL SCRIPT JavaScript-->
+    <?php endif; ?>
 <title>
 <?php
           global $page, $paged;
@@ -76,18 +85,16 @@
              </div>
              <!-- Menu -->
 
-             <a href="https://rascalsthemes.com/demo/vex/demo1/wp-content/uploads/2019/12/Crazy_Eyes.mp3" class="bg-player rascals-player">
+             <!--<a href="https://amthanhphuquoc.com/./tao-su-kien/" class="bg-player rascals-player plan-event">-->
+				 <a href="/tao-su-kien/" class="bg-player rascals-player plan-event">
                 <span class="bg-player__loader"></span>
                 <div class="bg-player__inner magneto">
                    <div class="anim-border">
                       <span class="anim-border__circle">
-                         <svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="33" cy="33" r="32"></circle>
-                         </svg>
-                         <svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="33" cy="33" r="32"></circle>
-                         </svg>
-                      </span>
+						 <span class="" data-toggle="tooltip" data-placement="bottom" title="YÊU CẦU BÁO GIÁ">
+   				 			<i class="icon icon-calendar tooltip"></i>
+ 						</span>
+                	</span>
                    </div>
                    <span class="bg-player__eq">
                    <span class="eq-bar eq-bar1"></span>

@@ -18,7 +18,7 @@ get_header();
      $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
       $args = array(
         'category_name'    => 'tin-tuc',
-         'orderby' => 'date',
+        'orderby' => 'date',
    		 'post_type'        => 'post',
    		 'post_status'      => 'publish',
    		 'posts_per_page'   => 3,

@@ -1,3 +1,6 @@
 @charset "shift_jis";
 /* CSS Document */
 
+.bg-player__eq {
+    display: none;
+}

@@ -1,12 +1,18 @@
 <?php get_header();
 ?>
-	  <div class="content--horizontal albums">
+<a href="#" class="prev"></a>
+<a href="#" class="next"></a>
+	  <div class="content--horizontal albums" id="scroll-custom">
+	 
 		 <div class="fx-perspective fs">
 			<div class="fs__image fx-perspective__image" style="background-image: url(<?php bloginfo('template_directory');?>/img/bg/parallax-bg.jpg)"></div>
 			<div class="fade-layer" style="opacity:0.7"></div>
 			<div id="fs-scroll" class="fs-scroll--h">
 			   <div id="fs-scroll__content">
 				  <div class="albums-grid grid-albums-horizontal">
+				  
+				    <div class="scroll-prev" style="transform: translateX(0);">
+				    <div class="scroll-next" style="transform: translateX(0);">
 
                       <?php
                       if (have_posts()): while(have_posts()): the_post();
@@ -43,9 +49,13 @@
 				  </div>
 			   </div>
 			   <!-- #fs-scroll__content -->
+			    </div>
+				</div>
 			</div>
 			<!-- #fs-scroll -->
 		 </div>
+		 
+		 
 		 <!-- .fx -->
 	  </div>
 	  <!-- .content -->
