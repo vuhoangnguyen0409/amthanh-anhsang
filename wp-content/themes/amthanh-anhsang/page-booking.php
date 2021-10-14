@@ -7,10 +7,12 @@ if (isset($_POST["btnSubmit"])) {
     $name = $_POST["txtName"];
     $email = $_POST["txtEmail"];
     $phone = $_POST["txtPhone"];
-    $address= $_POST["txtAddress"];
+    $aaddress= $_POST["txtAddress"];
+    $adate= $_POST["txtDate"];
     $screenSize = $_POST["txtScreenSize"];
     $screenType = $_POST["sltScreenType"];
-    $stageSize = $_POST["txtStageSize"];
+    //$stageSize = $_POST["txtStageSize"];
+    $stage = $_POST["rdoStage"];
 
     // print "<pre>";
     // print_r($total);
@@ -61,24 +63,28 @@ if (isset($_POST["btnSubmit"])) {
                         <td>'.$email.'</td>
                     </tr>
                     <tr>
-                        <th>Địa chỉ</th>
-                        <td>'.$address.'</td>
+                        <th>Địa điểm tổ chức</th>
+                        <td>'.$aaddress.'</td>
+                    </tr>
+                    <tr>
+                        <th>Ngày tổ chức</th>
+                        <td>'.$adate.'</td>
                     </tr>
                     <tr>
                         <th>Gói Âm Thanh</th>
                         <td>'.$music.'</td>
                     </tr>
                     <tr>
+                        <th>Gói Ánh sáng</th>
+                        <td>'.$light.'</td>
+                    </tr>
+                    <tr>
                         <th>Màn hình Led</th>
                         <td>'.$screenSize.' m2<span style="display:inline-block;padding:0 10px">('.$screenType.')</span></td>
                     </tr>
                     <tr>
-                        <th>Sân Khấu</th>
-                        <td>'.$stageSize.' m2<span style="display:inline-block;padding:0 10px">Cao: 0.8m</span></td>
-                    </tr>
-                    <tr>
-                        <th>Gói Ánh sáng</th>
-                        <td>'.$light.'</td>
+                        <th>Gói Sân Khấu</th>
+                        <td>'.$stage.'</td>
                     </tr>
                     <tr style="display:none;">
                         <th>Tổng cộng</th>
@@ -102,9 +108,9 @@ if (isset($_POST["btnSubmit"])) {
         //$headers .= "CC: nguyen.daiha@yahoo.com\r\n";
         //$headers .= "BCC: hidden@example.com\r\n";
         if ( mail($to,$subject,$message,$headers) ) {
-            //echo "The email has been sent!";
-            echo '<script>alert("Thanks for your planning. We will call you soon!")</script>';
-            echo '<script> window.location.href = "https://amthanhphuquoc.com/";</script>';
+            ////echo "The email has been sent!";
+            //echo '<script>alert("Thanks for your planning. We will call you soon!")</script>';
+            echo '<script> window.location.href = "https://amthanhphuquoc.com/thank-you/";</script>';
         } else {
             echo "The email has failed!";
         }
@@ -168,7 +174,7 @@ if (have_posts()): while(have_posts()): the_post();?>
         		                                            <div class="choice choice01" data-toggle="wizard-radio" rel="tooltip" title="This is good if you travel alone.">
         		                                                <input type="radio" name="rdoMusic" value="<?php echo $music_package;?>">
         		                                                <div class="icon">
-        		                                                    <i class="material-icons">sensors</i>
+        		                                                    <i class="material-icons">speaker</i>
         		                                                </div>
                                                                 <div class="description">
         		                                                    <h6><?php echo $music_package;?></h6>
@@ -187,6 +193,42 @@ if (have_posts()): while(have_posts()): the_post();?>
     		                                    </div>
     		                                </div>
     		                            </div>
+
+                                        <div class="tab-pane" id="light">
+                                            <h4 class="info-text">Light</h4>
+                                            <div class="row">
+                                              <div class="col-sm-10 col-sm-offset-1">
+                                                    <?php
+                                                    // Check rows exists.
+                                                    if( have_rows('music') ):
+                                                        // Loop through rows.
+                                                        while( have_rows('light') ) : the_row();
+                                                            // Load sub field value.
+                                                        $light_package = get_sub_field('light_package');
+                                                        $light_description = get_sub_field('light_description');?>
+                                                  <div class="col-sm-4">
+                                                      <div class="choice choice02" data-toggle="wizard-radio" rel="tooltip" title="This is good if you travel alone.">
+                                                          <input type="radio" name="rdoLight" value="<?php echo $light_package;?>s">
+                                                          <div class="icon">
+                                                              <i class="material-icons">bolt</i>
+                                                          </div>
+                                                            <div class="description">
+                                                                <h6><?php echo $light_package;?></h6>
+                                                                <p><?php echo $light_description;?></p>
+                                                            </div>
+                                                      </div>
+                                                  </div>
+                                                    <?php
+                                                    // End loop.
+                                                    endwhile;
+
+                                                // No value.
+                                                else :
+                                                    // Do something...
+                                                endif;?>
+                                              </div>
+                                          </div>
+                                        </div>
 
                                         <div class="tab-pane" id="screen">
     		                                <h4 class="info-text">screen</h4>
@@ -211,7 +253,7 @@ if (have_posts()): while(have_posts()): the_post();?>
     		                                </div>
     		                            </div>
 
-                                        <div class="tab-pane" id="stage">
+                                        <!--<div class="tab-pane" id="stage">
     		                                <h4 class="info-text">Stage</h4>
     		                                <div class="row">
     		                                    <div class="col-sm-10 col-sm-offset-1 w50">
@@ -227,32 +269,32 @@ if (have_posts()): while(have_posts()): the_post();?>
                                                      <div><h2>Kích Thước Sân Khấu <input type="text" class="stageSize disable" name="txtStageSize" value=""><span id="stageSize"></span><span class="label">m2</h2></div>
     		                                    </div>
     		                                </div>
-    		                            </div>
+    		                            </div>-->
 
-    		                            <div class="tab-pane" id="light">
-                                            <h4 class="info-text">Light</h4>
-    		                                <div class="row">
-    		                                    <div class="col-sm-10 col-sm-offset-1">
+                                        <div class="tab-pane" id="stage">
+    		                                <h4 class="info-text">Stage</h4>
+                                           <div class="row">
+                                               <div class="col-sm-10 col-sm-offset-1">
                                                     <?php
                                                     // Check rows exists.
-                                                    if( have_rows('music') ):
+                                                    if( have_rows('stage') ):
                                                         // Loop through rows.
-                                                        while( have_rows('light') ) : the_row();
+                                                        while( have_rows('stage') ) : the_row();
                                                             // Load sub field value.
-                                                        $light_package = get_sub_field('light_package');
-                                                        $light_description = get_sub_field('light_description');?>
-    		                                        <div class="col-sm-4">
-    		                                            <div class="choice choice02" data-toggle="wizard-radio" rel="tooltip" title="This is good if you travel alone.">
-    		                                                <input type="radio" name="rdoLight" value="<?php echo $light_package;?>s">
-    		                                                <div class="icon">
-    		                                                    <i class="material-icons">bolt</i>
-    		                                                </div>
-                                                            <div class="description">
-                                                                <h6><?php echo $light_package;?></h6>
-                                                                <p><?php echo $light_description;?></p>
-                                                            </div>
-    		                                            </div>
-    		                                        </div>
+                                                        $stage_package = get_sub_field('stage_package');
+                                                        $stage_description = get_sub_field('stage_description');?>
+                                                       <div class="col-sm-4">
+                                                           <div class="choice choice03" data-toggle="wizard-radio" rel="tooltip" title="This is good if you travel alone.">
+                                                               <input type="radio" name="rdoStage" value="<?php echo $stage_package;?>">
+                                                               <div class="icon">
+                                                                   <i class="material-icons">event_seat</i>
+                                                               </div>
+                                                                <div class="description">
+                                                                   <h6><?php echo $stage_package;?></h6>
+                                                                    <p><?php echo $stage_description;?></p>
+                                                                </div>
+                                                           </div>
+                                                       </div>
                                                     <?php
                                                     // End loop.
                                                     endwhile;
@@ -261,9 +303,9 @@ if (have_posts()): while(have_posts()): the_post();?>
                                                 else :
                                                     // Do something...
                                                 endif;?>
-    		                                    </div>
-    		                                </div>
-    		                            </div>
+                                               </div>
+                                           </div>
+                                       </div>
 
                                         <div class="tab-pane" id="account">
     		                            	<div class="row">
@@ -291,6 +333,17 @@ if (have_posts()): while(have_posts()): the_post();?>
     			                                        </div>
     												</div>
 
+                                                    <div class="input-group input-date">
+    													<span class="input-group-addon">
+    														<i class="material-icons">edit_calendar</i>
+    													</span>
+    													<div class="form-group label-floating">
+    			                                          	<label class="control-label">Ngày tổ chức</label>
+                                                            <input name="txtDate" type="text" class="form-control" datepicker data-trigger="#show-datepicker" data-date-format="d-m-yyyy">
+<span id="show-datepicker" class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+    			                                        </div>
+    												</div>
+
     		                                	</div>
     		                                	<div class="col-sm-6">
                                                     <div class="input-group">
@@ -313,6 +366,7 @@ if (have_posts()): while(have_posts()): the_post();?>
     			                                        </div>
     												</div>
     		                                	</div>
+
     		                            	</div>
     		                            </div>
     		                        </div>

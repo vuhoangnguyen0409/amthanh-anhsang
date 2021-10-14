@@ -126,9 +126,9 @@ script src = "assets/js/jquery.min.js" > < /script>
 	<script type="text/javascript" src="<?php bloginfo('template_directory');?>/event-css-js/popper.min.js"></script>
 	<script type="text/javascript" src="<?php bloginfo('template_directory');?>/event-css-js/bootstrap.min.js" ></script>
 	<script type="text/javascript" src="<?php bloginfo('template_directory');?>/event-css-js/script.js"></script>
+    <script type="text/javascript" src="<?php bloginfo('template_directory');?>/event-css-js/datepicker.min.js"></script>
     <script type="text/javascript" src="<?php bloginfo('template_directory');?>/event-css-js/book.js"></script>
 
-    
 <!--PERSONAL SCRIPT JavaScript-->
     <?php endif; ?>
 	</html>

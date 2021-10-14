@@ -657,7 +657,7 @@ h2.title {
   border-radius: 50%;
   color: #999999;
   margin: 0 auto 20px;
-  border: 4px solid #CCCCCC;
+  border: 3px solid #CCCCCC;
   transition: all 0.2s;
   -webkit-transition: all 0.2s;
 }
@@ -2634,6 +2634,85 @@ select:-moz-focusring {
     margin-top: 8px;
     width: 100%;
 }
+#show-datepicker {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 15px; 
+    z-index: 999; 
+}
+#show-datepicker i {
+    position: absolute;
+    right: 0;
+    margin: 9px;
+}
+.content-days {
+    overflow: hidden;
+}
+.datepicker-title {
+    background: #fff;
+}
+.mail-sent {
+    text-align: center;
+    display: none;
+}
+.mail-sent h4 {
+    color: #1cb38b;
+    font-size: 30px;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+.mail-sent .material-icons {
+    font-size: 80px;
+    border: 5px solid;
+    color: #1cb38b;
+    border-radius: 50%;
+    padding: 13px;
+}
+.mail-sent p {
+    width: 80%;
+    margin: 60px auto 30px;
+    text-align: center;
+    font-size: 20px;
+}
+.mail-sent .tel {
+    color: #1cb38b !important;
+    font-weight: 600;
+}
+.mail-sent .btn-danger {
+    margin: 40px auto 20px;
+    color: #fff !important; 
+}
+.datepicker-content .selected, .datepicker-content .selected:hover {
+    color: #fff !important;
+    background: #1cb38b !important;
+    border-radius: 10px !important;
+}
+.datepicker-content li:hover {
+    background-color: transparent !important;
+    color: #1cb38b !important;
+    border: 1px solid #1cb38b !important;
+    border-radius: 10px !important;
+}
+.datepicker-title, .content-days, .datepicker-content li {
+    background: #2d3a40 !important;
+}
+.datepicker-week li, .datepicker-week li:hover {
+    background-color: #1cb38b30 !important;
+    color: #fff !important;
+}
+.datepicker-arrow:after {
+    border-bottom-color: #2d3a40 !important;
+}
+.datepicker-content {
+    border: 1px solid #1cb38b !important;
+    box-shadow: 0 0 3px #48ffcf !important;
+    border-radius: 10px !important;
+    overflow: hidden;
+}
+
+
 @media (max-width: 1199px) {
 
   .navbar .navbar-brand {
@@ -2675,7 +2754,7 @@ select:-moz-focusring {
     .pull-right {
         padding-left: 10px;
     }
-    #music, #light {
+    #music, #light, #stage {
        overflow-x: scroll;
     }
     .tab-pane > .row {
@@ -2687,7 +2766,7 @@ select:-moz-focusring {
     .active .col-sm-4 {
         min-width: 200px;
     }
-    .btn-finish {
+    .btn-finish, .magneto-wrapper {
         width: 100% !important;
     }
 }
@@ -2695,8 +2774,11 @@ select:-moz-focusring {
     .moving-tab {
         display: none;
     }
+    .wizard-navigation {
+        margin: 0 -10px;
+    }
     .wizard-card .nav-pills > li {
-        width: 33% !important
+        width: 33.33% !important
     }
 
     .nav-pills {
@@ -2782,6 +2864,9 @@ select:-moz-focusring {
         min-width: 50%;
         width: auto !important;
     }
+    .wizard-navigation {
+        margin: 0 -5px;
+    }
     .w50 > div {
         padding: 0 10px;
         width: 100%;
@@ -2841,7 +2926,7 @@ select:-moz-focusring {
     }
     .image-container {
         align-items: baseline;
-        margin-top: 5px;
+        margin-top: 10px;
         /*position: fixed;
         top: 5px;
         right: 10px;
@@ -2852,7 +2937,7 @@ select:-moz-focusring {
         margin: 0;
     }*/
     .pt-fs-parallax__inner {
-        padding: 0 20px !important;
+        padding: 0 25px !important;
     }
     .is-mobile .scroll-content {
         height: calc(100%) !important;

@@ -19,4 +19,4 @@ https://rascalsthemes.com/demo/vex/demo1/beats/
 
 - File form tạo sự kiện: themes/amthanh-anhsang/page-booking.php
 - CSS: themes/amthanh-anhsang/event-css-js/style.css
-- Icon: themes/amthanh-anhsang/event-css-js/icons.css
+- Icon: https://fonts.google.com/icons?selected=Material+Icons:home

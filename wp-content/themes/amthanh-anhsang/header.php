@@ -7,10 +7,11 @@
 <link rel="icon" type="image/png" href="<?php bloginfo('template_directory');?>/img/logo.png"/>
 <?php
 	global $post;
-	if ( is_page( 512 ) ): //Change this number to id of page ?>
+	if ( is_page( array( 512, 680 ) ) ): //Change this number to id of page ?>
 	<link rel="stylesheet" href="<?php bloginfo('template_directory');?>/event-css-js/icons.css" />
 	<link rel="stylesheet" href="<?php bloginfo('template_directory');?>/event-css-js/bootstrap.css" />
     <link rel="stylesheet" href="<?php bloginfo('template_directory');?>/event-css-js/style.css" />
+	<link rel="stylesheet" href="<?php bloginfo('template_directory');?>/event-css-js/datepicker.min.css" />
 <!--PERSONAL SCRIPT JavaScript-->
     <?php endif; ?>
 <title>
@@ -90,11 +91,10 @@
                 <span class="bg-player__loader"></span>
                 <div class="bg-player__inner magneto">
                    <div class="anim-border">
-                      <span class="anim-border__circle">
-						 <span class="" data-toggle="tooltip" data-placement="bottom" title="YÊU CẦU BÁO GIÁ">
-   				 			<i class="icon icon-calendar tooltip"></i>
- 						</span>
-                	</span>
+                      <div class="anim-border__circle">
+						<i class="icon icon-calendar"></i>
+                	  </div>
+
                    </div>
                    <span class="bg-player__eq">
                    <span class="eq-bar eq-bar1"></span>
@@ -105,6 +105,7 @@
                    <span class="eq-bar eq-bar6"></span>
                    </span>
                 </div>
+				<p class="button-text">YÊU CẦU BÁO GIÁ</p>
              </a>
              <a href="#" class="menu-button">
                 <div class="menu-button__inner magneto">

@@ -6196,6 +6196,8 @@ input[type="submit"]:hover, button:hover, .btn:hover {
     border: 2px solid #ffffff;
     background: #0aa98a;
     border-radius: 50%;   
+    max-width: 60px;
+    max-height: 60px;
 }
 
 .plan-event:before {
@@ -6216,7 +6218,6 @@ input[type="submit"]:hover, button:hover, .btn:hover {
 .plan-event .anim-border {
     height: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
@@ -7375,10 +7376,31 @@ body .mfp-arrow:hover {
 	-webkit-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
 }
+
+.button-text {
+    DISPLAY: BLOCK;
+    width: 130PX;
+    TEXT-ALIGN: CENTER;
+    FONT-SIZE: 17PX;
+    margin-top: 7px;
+    color: #0aa082;
+    margin-bottom: 0;
+}
 @media (max-width: 1200px) {
     .menu-top a {
         margin: 0 15px;
         font-size: 16px;
+    }
+}
+@media (max-width: 1025px) {
+    .plan-event .magneto-wrapper {
+        min-width: auto;
+    }
+    .bg-player__inner {
+        width: 60px;
+    }
+    .button-text {
+        display: none;
     }
 }
 @media (min-width: 1025px) {
@@ -7389,9 +7411,15 @@ body .mfp-arrow:hover {
         right: 50%;
         text-align: center;
         margin: 0;
-        width: 60px;
+        min-width: 130px;
     }
+    
     .menu-button {
         display: none;
+    }
+}
+@media (max-width: 479px) {
+    .bg-player__inner {
+        width: 50px;
     }
 }

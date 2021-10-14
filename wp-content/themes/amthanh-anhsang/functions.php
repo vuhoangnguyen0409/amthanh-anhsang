@@ -42,8 +42,10 @@ function add_style_js() {
   wp_register_script( 'threefx', get_template_directory_uri() . '/js/threefx.js', array( 'jquery' ), '', true );
   wp_enqueue_script( 'threefx');
 
+ if( ! is_page( array( 'tao-su-kien', 'student-work' ) ) ) {
   wp_register_script( 'frontend-toolkit', get_template_directory_uri() . '/js/frontend-toolkit.js', array( 'jquery' ), '', true );
   wp_enqueue_script( 'frontend-toolkit');
+}
 
       wp_register_script( 'scripts-js-extra', get_template_directory_uri() . '/js/scripts-js-extra.js', array( 'jquery' ), '', true );
       wp_enqueue_script( 'scripts-js-extra');
