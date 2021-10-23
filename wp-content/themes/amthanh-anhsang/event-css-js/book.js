@@ -40,31 +40,31 @@ $(document).ready(function(){
 
 $('#submit').click(function(){
     // Music
-    if (!$("input[name='rdoMusic']:checked").val()) {
-        $('#error').html('<div class="error-bg"><i class="icon icon-cancel-circle"></i>Vui lòng chọn Gói Âm Thanh</div>');
-        $('.nav-pills li a[href="#music"]').trigger('click');
+    //if (!$("input[name='rdoMusic']:checked").val()) {
+        //$('#error').html('<div class="error-bg"><i class="icon icon-cancel-circle"></i>Vui lòng chọn Gói Âm Thanh</div>');
+        //$('.nav-pills li a[href="#music"]').trigger('click');
         //alert('Vui lòng chọn loại Âm Thanh');
-        return false;
-    }
+        //return false;
+    //}
     // Light
-    if (!$("input[name='rdoLight']:checked").val()) {
-        $('#error').html('<div class="error-bg"><i class="icon icon-cancel-circle"></i>Vui lòng chọn Gói Ánh Sáng</div>');
-        $('.nav-pills li a[href="#light"]').trigger('click');
+    //if (!$("input[name='rdoLight']:checked").val()) {
+        //$('#error').html('<div class="error-bg"><i class="icon icon-cancel-circle"></i>Vui lòng chọn Gói Ánh Sáng</div>');
+        //$('.nav-pills li a[href="#light"]').trigger('click');
         //alert('Vui lòng chọn loại Ánh Sáng');
-        return false;
-    }
+        //return false;
+    //}
     // Screen
-    if($("#screenW").val() == "" || $("#screenW").val() == null || $("#screenH").val() == "" || $("#screenH").val() == null){
-        $('#error').html('<div class="error-bg"><i class="icon icon-cancel-circle"></i>Vui lòng nhập kích thước Màn Hình</div>');
-        $('.nav-pills li a[href="#screen"]').trigger('click');
-        return false;
-    }
-    if (!$("select[name='sltScreenType']").val()) {
-        $('#error').html('<div class="error-bg"><i class="icon icon-cancel-circle"></i>Vui lòng chọn Lắp Ráp</div>');
-        $('.nav-pills li a[href="#screen"]').trigger('click');
+    //if($("#screenW").val() == "" || $("#screenW").val() == null || $("#screenH").val() == "" || $("#screenH").val() == null){
+        //$('#error').html('<div class="error-bg"><i class="icon icon-cancel-circle"></i>Vui lòng nhập kích thước Màn Hình</div>');
+        //$('.nav-pills li a[href="#screen"]').trigger('click');
+        //return false;
+    //}
+    //if (!$("select[name='sltScreenType']").val()) {
+        //$('#error').html('<div class="error-bg"><i class="icon icon-cancel-circle"></i>Vui lòng chọn Lắp Ráp</div>');
+        //$('.nav-pills li a[href="#screen"]').trigger('click');
         //alert('Vui lòng chọn Màn Hình: Trong Nhà hoặc Ngoài Trời');
-        return false;
-    }
+        //return false;
+    //}
     // Stage
     //if($("#stageW1").val() == "" || $("#stageW1").val() == null || $("#stageW2").val() == "" || $("#stageW2").val() == null){
         //$('#error').html('<div class="error-bg"><i class="icon icon-cancel-circle"></i>Vui lòng nhập kích thước Sân Khấu</div>');
@@ -72,12 +72,12 @@ $('#submit').click(function(){
         //return false;
     //}
     // Stage2
-    if (!$("input[name='rdoStage']:checked").val()) {
-        $('#error').html('<div class="error-bg"><i class="icon icon-cancel-circle"></i>Vui lòng chọn Gói Sân Khấu</div>');
-        $('.nav-pills li a[href="#stage"]').trigger('click');
+    //if (!$("input[name='rdoStage']:checked").val()) {
+        //$('#error').html('<div class="error-bg"><i class="icon icon-cancel-circle"></i>Vui lòng chọn Gói Sân Khấu</div>');
+        //$('.nav-pills li a[href="#stage"]').trigger('click');
         //alert('Vui lòng chọn loại Ánh Sáng');
-        return false;
-    }
+        //return false;
+    //}
     // Account
     if ($("input[name='txtName']").val().length === 0) {
         $('#error').html('<div class="error-bg"><i class="icon icon-cancel-circle"></i>Vui lòng nhập Tên của bạn</div>');

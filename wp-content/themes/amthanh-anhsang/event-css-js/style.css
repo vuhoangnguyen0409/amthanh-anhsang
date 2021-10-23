@@ -103,10 +103,10 @@ input[type="submit"]::-moz-focus-inner,
 select::-moz-focus-inner,
 input[type="file"] > input[type="button"]::-moz-focus-inner {
   outline: 0 !important;
-} 
+}
 .ul, li {
     list-style: none;
-} 
+}
 .ul li {
     color: red !important;
 }
@@ -361,7 +361,7 @@ h2.title {
 
 .wizard-card h4 {
     color: #000;
-    
+
 }
 
 .wizard-card h5 {
@@ -834,6 +834,11 @@ output {
   .form-horizontal .control-label {
     padding-top: 8px;
   }
+
+  #app .col-sm-10 {
+      display: flex;
+      flex-wrap: wrap;
+  }
 }
 @media (min-width: 768px) {
   .form-horizontal .form-group-lg .control-label {
@@ -1120,7 +1125,7 @@ label.control-label {
 .form-group.label-static label.control-label, .form-group.label-floating.is-focused label.control-label, .form-group.label-floating:not(.is-empty) label.control-label {
   top: -28px;
   left: 0;
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.07143;
 }
 .form-group.label-floating input.form-control:-webkit-autofill ~ label.control-label label.control-label {
@@ -2504,7 +2509,7 @@ body{
     background: #2e3238;
 }
 .tab-content > .tab-pane {
-    width: 100%; 
+    width: 100%;
 }
 .tab-content > .tab-pane .active {
     -webkit-animation: fadeIn 1s;
@@ -2556,7 +2561,7 @@ select {
 
   /* reset */
 
-  margin: 0;      
+  margin: 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -2639,8 +2644,8 @@ select:-moz-focusring {
     width: 100%;
     top: 0;
     right: 0;
-    bottom: 15px; 
-    z-index: 999; 
+    bottom: 15px;
+    z-index: 999;
 }
 #show-datepicker i {
     position: absolute;
@@ -2655,7 +2660,6 @@ select:-moz-focusring {
 }
 .mail-sent {
     text-align: center;
-    display: none;
 }
 .mail-sent h4 {
     color: #1cb38b;
@@ -2682,7 +2686,7 @@ select:-moz-focusring {
 }
 .mail-sent .btn-danger {
     margin: 40px auto 20px;
-    color: #fff !important; 
+    color: #fff !important;
 }
 .datepicker-content .selected, .datepicker-content .selected:hover {
     color: #fff !important;
@@ -2711,8 +2715,26 @@ select:-moz-focusring {
     border-radius: 10px !important;
     overflow: hidden;
 }
-
-
+#app .tab-pane > .row > .col-sm-10 {
+    max-height: 62vh;
+    overflow-y: scroll;
+}
+.wizard-container {
+    min-width: 900px;
+}
+@media (max-width: 1280px) {
+    #app .col-sm-10 {
+        margin: 0;
+        max-width: 100%;
+    }
+    #app .tab-pane > .row > .col-sm-10 {
+        max-width: 100%;
+        margin: 0;
+    }
+    #app .tab-pane > .row, .image-container > .container > .row {
+        display: initial;
+    }
+}
 @media (max-width: 1199px) {
 
   .navbar .navbar-brand {
@@ -2723,13 +2745,16 @@ select:-moz-focusring {
     padding-top: 15px;
     padding-bottom: 15px;
   }
+  .wizard-container {
+    min-width: inherit;
+  }
 }
 @media (max-width: 1024px) {
     #app .container {
         max-width : 100%;
         padding: 0;
     }
-    #app .col-sm-10 {  
+    #app .col-sm-10 {
         flex: 100%;
         max-width: 100%;
         margin: 0;
@@ -2745,6 +2770,11 @@ select:-moz-focusring {
     #app .tab-pane .col-sm-10 {
         display: flex;
     }
+    #app .tab-pane > .row > .col-sm-10 {
+        max-height: initial;
+        overflow-y: initial;
+    }
+
     .wizard-footer .pull-right, .wizard-footer .pull-left {
         width: 50%;
     }
@@ -2874,7 +2904,7 @@ select:-moz-focusring {
     #app .col-sm-10 {
         padding: 0;
     }
-  
+
     #music {
        overflow-x: hidden;
     }
@@ -2930,8 +2960,8 @@ select:-moz-focusring {
         /*position: fixed;
         top: 5px;
         right: 10px;
-        left: 10px;   
-        */ 
+        left: 10px;
+        */
     }
     /*.image-container > .container > .row {
         margin: 0;
@@ -2941,7 +2971,7 @@ select:-moz-focusring {
     }
     .is-mobile .scroll-content {
         height: calc(100%) !important;
-    }     
+    }
 }
 @media (max-width: 420px) {
     .w50 > div {
@@ -2961,8 +2991,8 @@ select:-moz-focusring {
     .active .col-sm-4, .active .col-sm-6 {
         padding: 0 20px 0 0;
     }
-    
-}@media (max-width: 330px) { 
+
+}@media (max-width: 330px) {
     .wizard-card .nav-pills > li {
         width: 50% !important;
     }
@@ -2970,7 +3000,7 @@ select:-moz-focusring {
 ::-webkit-scrollbar
 {
 	height: 10px;
-  
+
 }
 ::-webkit-scrollbar-thumb
 {
@@ -2982,11 +3012,16 @@ select:-moz-focusring {
 	/*background-color: #222225 !important;*/
 }
 .is-fullscreen.is-smoothscroll #app {
-    min-height: 100vh;    
+    min-height: 100vh;
 }
 #app .fx-smooth-move-layer {
     background-size: cover;
 }
 .footer__note a {
+    color: #fff !important;
+}
+
+textarea {
+    padding-left: 0 !important;
     color: #fff !important;
 }

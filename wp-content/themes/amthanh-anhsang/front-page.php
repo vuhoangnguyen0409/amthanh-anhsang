@@ -36,7 +36,7 @@
 		        	foreach ( $posts_array as $post ) : setup_postdata( $post );
 								$thumbnail_id = get_post_thumbnail_id( $post->ID );
 						    $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);?>
-								<div class="scroll-item is-waypoint fx-scale-from-right delay-05">
+								<div class="scroll-item is-waypoint fx-scale-from-right delay-05 done">
 		 						<div class="mod mod-album-2 album-item">
 		 						   <div class="mod__inner post-254 vex_albums type-vex_albums status-publish has-post-thumbnail hentry">
 		 							  <div class="mod__img">

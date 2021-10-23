@@ -8,11 +8,15 @@ if (isset($_POST["btnSubmit"])) {
     $email = $_POST["txtEmail"];
     $phone = $_POST["txtPhone"];
     $aaddress= $_POST["txtAddress"];
-    $adate= $_POST["txtDate"];
+    $adate = $_POST["txtDate"];
+    $screenW = $_POST["numScreenW"];
+    $screenH = $_POST["numScreenH"];
     $screenSize = $_POST["txtScreenSize"];
     $screenType = $_POST["sltScreenType"];
     //$stageSize = $_POST["txtStageSize"];
     $stage = $_POST["rdoStage"];
+    $note = $_POST["txtArNote"];
+
 
     // print "<pre>";
     // print_r($total);
@@ -47,7 +51,7 @@ if (isset($_POST["btnSubmit"])) {
             </style>
         </head>
         <body>
-            <p style="text-align:center"><img src="https://sukienphuquoc.com/wp-content/uploads/2021/09/LOGO-HONG-TRA-VANG-DONG-PNG.png" width="70px"></p>
+            <p style="text-align:center"><img src="" width="70px"></p>
             <div id="email-wrap">
                 <table>
                     <tr>
@@ -80,11 +84,15 @@ if (isset($_POST["btnSubmit"])) {
                     </tr>
                     <tr>
                         <th>Màn hình Led</th>
-                        <td>'.$screenSize.' m2<span style="display:inline-block;padding:0 10px">('.$screenType.')</span></td>
+                        <td>'.$screenW.' x '.$screenH.' = '.$screenSize.' m2<span style="display:inline-block;padding:0 10px">('.$screenType.')</span></td>
                     </tr>
                     <tr>
                         <th>Gói Sân Khấu</th>
                         <td>'.$stage.'</td>
+                    </tr>
+                    <tr>
+                        <th>Yêu Cầu Khác</th>
+                        <td>'.$note.'</td>
                     </tr>
                     <tr style="display:none;">
                         <th>Tổng cộng</th>
@@ -96,7 +104,7 @@ if (isset($_POST["btnSubmit"])) {
         </html>';
         //
         $from = "admin@sukienphuquoc.com";
-        $to = "admin@sukienphuquoc.com";
+        $to = "datphuquocvn@gmail.com";
         $subject = "Book An Event From amthanhphuquoc.com";
         // HTML CSS
         $headers = 'MIME-Version: 1.0' . "\r\n";
@@ -105,7 +113,7 @@ if (isset($_POST["btnSubmit"])) {
         $headers .= 'From: ' .$from. "\r\n";
         $headers .= "Reply-To: admin@sukienphuquoc.com\r\n";
         $headers .= "Return-Path: info@sukienphuquoc.com\r\n";
-        //$headers .= "CC: nguyen.daiha@yahoo.com\r\n";
+        $headers .= "CC: vuhoangnguyen49@gmail.com\r\n";
         //$headers .= "BCC: hidden@example.com\r\n";
         if ( mail($to,$subject,$message,$headers) ) {
             ////echo "The email has been sent!";
@@ -235,10 +243,10 @@ if (have_posts()): while(have_posts()): the_post();?>
     		                                <div class="row">
     		                                    <div class="col-sm-10 col-sm-offset-1 w50">
                                                     <div class="screen-width">
-                                                        <label>Ngang</label><input type="number" class="multiplier-1" id="screenW">
+                                                        <label>Ngang</label><input name="numScreenW" type="number" class="multiplier-1" id="screenW">
                                                     </div>
                                                     <div class="screen-height">
-                                                        <label>Cao</label><input type="number" class="multiplier-1" id="screenH">
+                                                        <label>Cao</label><input name="numScreenH" type="number" class="multiplier-1" id="screenH">
                                                     </div>
                                                     <div class="screenType">
                                                         <label for="screen-slect">Lắp ráp</label>
@@ -363,6 +371,16 @@ if (have_posts()): while(have_posts()): the_post();?>
     													<div class="form-group label-floating">
     			                                          	<label class="control-label">Địa điểm tổ chức</label>
     			                                          	<input name="txtAddress" type="text" class="form-control">
+    			                                        </div>
+    												</div>
+
+                                                    <div class="input-group">
+    													<span class="input-group-addon">
+    														<i class="material-icons">feedback</i>
+    													</span>
+    													<div class="form-group label-floating">
+    			                                          	<label class="control-label">Yêu Cầu Khác</label>
+                                                            <textarea name="txtArNote" rows="1" class="textarea form-control">...</textarea>
     			                                        </div>
     												</div>
     		                                	</div>
